@@ -14,7 +14,43 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/*
+TUANNA START ADD 15-03-2019
+ */
+Route::get('/product', function () {
+    return view('font-end.page.product');
+})->name('product');
+Route::get('/news', function () {
+    return view('font-end.page.news');
+})->name('news');
+Route::get('/post', function () {
+    return view('font-end.page.single-post');
+})->name('post');
+Route::get('/contact', function () {
+    return view('font-end.page.contact');
+})->name('contact');
+Route::get('/single', function () {
+    return view('font-end.page.single-product');
+})->name('single-product');
+//Trang liên hệ [tuan]
+Route::get('/contact', 'ContactController@getCreate')->name('contact');
+Route::post('/contact', 'ContactController@postCreate')->name('contact');
+/*
+TUANNA START END 15-03-2019
+ */
 Route::middleware(['auth'])->prefix('admin')->group(function () {
+    /*
+        TUANNA START ADD 15-03-2019
+    */
+    //Quản lý thông tin liên hệ
+    Route::prefix('contact')->group(function () {
+        Route::get('/list', 'ContactController@index')->name('list-contact');
+        Route::get('/edit/{id}', 'ContactController@getEdit')->name('edit-contact');
+        Route::post('/edit/{id}', 'ContactController@postEdit')->name('edit-contact');
+    });
+    /*
+        TUANNA START END 15-03-2019
+    */
     Route::get('/', function () {
         return view('admin.layouts.default',['flag' => 'dashboard']);
     })->name('dashboard');
