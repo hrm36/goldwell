@@ -8365,3 +8365,31 @@ body.md-skin {
     margin: 0;
   }
 }
+#myModal .modal-body button {
+  display: inline-block;
+  float: none;
+  margin: 0 20px;
+  width: 100px;
+  font-size: 15px;
+  background: #126364;
+  color: #fff;
+}
+#myModal .modal-body {
+  text-align: center;
+}
+.modal-body button a {
+  color: #fff
+}
+#myModal .modal-body button.close {
+  display: inline-block;
+  float: none;
+  margin: 0 20px;
+  width: 100px;
+  font-size: 15px;
+  background: #a94442;
+  color: #fff;
+  opacity: 1;
+  padding: 10px;
+  border-radius: 5px;
+  text-shadow: none;
+}

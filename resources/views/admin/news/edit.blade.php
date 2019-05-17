@@ -25,7 +25,7 @@
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="{{route('list-sp')}}">Danh sách bài viết</a>
+				<a href="{{route('list-news')}}">Danh sách bài viết</a>
 			</li>
 			<li class="active">
 				<strong>Thay đổi thông tin bài viết</strong>
@@ -34,7 +34,7 @@
 	</div>
 	<div class="col-sm-8">
 		<div class="title-action">
-			<a href="#" class="btn btn-primary">Trở về danh sách bài viết</a>
+			<a href="{{route('list-news')}}" class="btn btn-primary">Trở về danh sách bài viết</a>
 		</div>
 	</div>
 </div>
@@ -54,39 +54,58 @@
 			</div>
 			{{-- START FORM --}}
 			<div class="ibox-content">
-				<form id="form" class="form-horizontal" role="form" action="{{route('update-sp',['slug'=>$product->slug])}}" 
+				@if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    <strong>{{$err}}</strong><br>
+                                @endforeach
+                            </div>
+                        @endif
+                        
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                <strong>{{session('error')}}</strong>
+                            </div>
+                        @endif
+                        @if(session('thongbao'))
+                            <div class="alert alert-success">
+                                <strong>{{session('thongbao')}}</strong>
+                            </div>
+                        @endif
+				<form id="form" class="form-horizontal" role="form" action="{{route('edit-news',['id'=>$news->id])}}" 
 				enctype="multipart/form-data" method="POST">
 				@csrf
-				<div class="panel-group payments-method" id="accordion">
+				<div class="panel-group-payments-method">
 					<!--Panel -->
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h5 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#style">Giao diện hiển thị</a>
-							</h5>
-						</div>
-					</div>
-					<!-- -->
-					<!--Panel -->
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h5 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#info">Thông tin bài viết</a>
-							</h5>
-						</div>
-						<div id="info" class="panel-collapse collapse">
+					<div class="panel-panel-default">
+						<div id="info" class="panel-collapse-collapse">
 							<div class="panel-body">
 								<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Tên bài viết (*) </label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="name" id="name" value="{{$product->name}}">
+										<input type="text" class="form-control" name="name" id="name" value="{{$news->name}}">
 									</div>
 								</div>
-
+								<div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
+									<label class="col-sm-2 control-label">Ảnh đại diện (*)</label>
+									<div class="col-sm-10">
+										<div class="input-group">
+											<span class="input-group-btn">
+												<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
+												class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
+												class="fa fa-picture-o"></i>Chọn ảnh</a>
+											</span>
+											<input id="thumb_0" class="form-control" type="text" name="image" value="{{$news->image}}" required>
+										</div>
+										<div id="preview" style="display: block;margin-bottom: 20px">
+											<div class="img_preview"><img src="{{$news->image}}"/>
+										</div>
+									</div>
+								</div>
 								<div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Slug (*) </label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="slug" id="slug" value="{{$product->slug}}">
+										<input type="text" class="form-control" name="slug" id="slug" value="{{$news->slug}}">
 									</div>
 								</div>
 
@@ -94,7 +113,7 @@
 									<label class="col-sm-2 control-label">Miêu tả ngắn (*) </label>
 									<div class="col-sm-10">
 										<textarea name="des_s" id="des_s" class="form-control my-editor" rows="20" required>
-										{!! $product->des_s !!}
+										{!! $news->des_s !!}
 										</textarea>
 									</div>
 								</div>
@@ -104,7 +123,7 @@
 									<label class="col-sm-2 control-label">Miêu tả chi tiết (*) </label>
 									<div class="col-sm-10">
 										<textarea name="des_f" id="des_f" class="form-control my-editor" rows="20" required>
-											{!! $product->des_f !!}
+											{!! $news->des_f !!}
 										</textarea>
 									</div>
 								</div>
@@ -114,8 +133,8 @@
 
 									<div class="col-md-4">
 										<select class="form-control m-b" name="status">
-											<option {{$product->status == 1 ? "selected" : ""}} value="1">Công khai</option>
-											<option {{$product->status == 0 ? "selected" : ""}} value="0">Không công khai</option>
+											<option {{$news->status == 1 ? "selected" : ""}} value="1">Công khai</option>
+											<option {{$news->status == 0 ? "selected" : ""}} value="0">Không công khai</option>
 										</select>                                       
 									</div>
 								</div>	 	                            	
@@ -126,8 +145,8 @@
 				</div>	
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<button class="btn btn-white" >Làm mới</button>
-						<button class="btn btn-primary" type="submit">Tạo mới</button>
+						<button class="btn btn-white">Làm mới</button>
+						<button class="btn btn-primary" type="submit">Cập nhật</button>
 					</div>
 				</div>					  				
 			</form>

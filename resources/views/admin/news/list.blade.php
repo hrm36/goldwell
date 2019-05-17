@@ -15,7 +15,7 @@
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="#">Danh sách tin tức</a>
+				<a href="{{route('list-sp')}}">Danh sách tin tức</a>
 			</li>
 			<li class="active">
 				<strong>Tất cả bài viết</strong>
@@ -44,6 +44,24 @@
 			</div>
 			<div class="ibox-content">
 				{{-- Data table --}}
+				@if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    <strong>{{$err}}</strong><br>
+                                @endforeach
+                            </div>
+                        @endif
+                        
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                <strong>{{session('error')}}</strong>
+                            </div>
+                        @endif
+                        @if(session('thongbao'))
+                            <div class="alert alert-success">
+                                <strong>{{session('thongbao')}}</strong>
+                            </div>
+                        @endif
 				<div class="table-responsive">
 					<table class="table table-striped">
 						<thead style="color: #000;font-weight: bold;">
@@ -64,7 +82,7 @@
                                    <!--  <td class="text-center">{{$p->des_s}}</td> -->
                                     <td class="text-center">{{$p->status}}</td>
 									<td class="text-center">
-										<a href="" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
+										<a href="{{route('edit-news',['id'=>$p->id])}}" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
 										<button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></button>
 										<div id="myModal" class="modal fade" role="dialog">
   											<div class="modal-dialog">
@@ -74,7 +92,7 @@
 											        <h4 class="modal-title">Bạn có muốn xóa?</h4>
 											      </div>
 											      <div class="modal-body">
-											        <button class="btn hoi"><a href="del/{{$p->id}}">Có</a></button><button type="button" class="close" data-dismiss="modal">Không</button>
+											        <button class="btn hoi"><a href="{{route('del-news',['id'=>$p->id])}}">Có</a></button><button type="button" class="close" data-dismiss="modal">Không</button>
 											      </div>
 											    </div>
 											</div>

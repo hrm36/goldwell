@@ -60,25 +60,27 @@ class NewController extends Controller
     public function postCreate(NewsRequest $request) {
         $tintuc = News::create($request->all());
         $tintuc->save();
-        return view('admin.news.create')->with('message','Thêm Bài viết mới thành công!')->with('flag','news_n');
+        return redirect(route('create-news'))->with('thongbao','Thêm bài viết mới thành công!');
     }
 
     public function getEdit($id)
     {
         $ct = News::find($id);       
-        return view('admin.news.edit',['news' => $ct])->with('thongbao','')->with('flag','news_n');
+        return view('admin.news.edit',['news' => $ct])->with('flag','news_n');
     }
 
-    public function postEdit(NewsRequest $request,$id) {
-     $ct->save();
-        return view('admin.news.edit',['news' => $ct])->with('thongbao','Bạn đã sửa thành công!');
+    public function postEdit(NewsRequest $request,$id) {  
+        $ct = News::find($id);
+        if(isset($ct)) $ct->update($request->all());
+        return redirect(route('edit-news',['id' => $ct->id]))->with('thongbao','Bạn đã sửa thành công!');
     }
     
     public function getDelete($id)
     {
-        $ct = News::find($id); 
-        $ct->delete();      
-        return view('admin.news.list')->with('thongbao','Bạn đã xóa thành công')->with('flag','news_n');
+        $_new = News::find($id); 
+        if (isset($_new)) $_new->delete();
+        $news = News::where('status',1)->get();
+        return redirect(route('list-news'))->with('thongbao','Bạn đã xóa thành công!');     
     }
     /**
      * Store a newly created resource in storage.
@@ -91,7 +93,6 @@ class NewController extends Controller
         News::create($request->all());
         $new_ = News::where('status', 1)->get();
         return view('admin.news.list',['flag' => 'setup_news', 'news' => $new_]);
-
     }
 
     /**

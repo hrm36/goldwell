@@ -368,6 +368,7 @@ class ComposerStaticInitc953194fdbdd07f4b44ad3798627d881
     );
 
     public static $classMap = array (
+        'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',
         'App\\Cat' => __DIR__ . '/../..' . '/app/Cat.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
@@ -383,6 +384,7 @@ class ComposerStaticInitc953194fdbdd07f4b44ad3798627d881
         'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\NewController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewController.php',
         'App\\Http\\Controllers\\QuytrinhController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuytrinhController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -392,6 +394,7 @@ class ComposerStaticInitc953194fdbdd07f4b44ad3798627d881
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\NewsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NewsRequest.php',
         'App\\Http\\Requests\\ProductInfoCatRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductInfoCatRequest.php',
         'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
         'App\\News' => __DIR__ . '/../..' . '/app/News.php',

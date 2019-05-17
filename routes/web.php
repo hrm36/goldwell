@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('homepage');
 /*
 TUANNA START ADD 15-03-2019
  */
@@ -35,6 +35,7 @@ Route::get('/single', function () {
 //Trang liên hệ [tuan]
 Route::get('/contact', 'ContactController@getCreate')->name('contact');
 Route::post('/contact', 'ContactController@postCreate')->name('contact');
+
 /*
 TUANNA START END 15-03-2019
  */
@@ -111,6 +112,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::post('/thong-tin-trang/thay-doi', 'NewController@storeInfoTrangDanhMuc')
         ->name('page-news-ed');
     });
+
+    //Quản lý Brand
+    Route::resource('brand', 'BrandController');
      /*
         TUANNA START END 16-03-2019
     */
@@ -140,3 +144,4 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 Auth::routes();
 
 Route::get('/home', '\App\Http\Controllers\Admin\ProductController@index')->name('home');
+Route::post('/create-slug', 'HomeController@createSlug')->name('create-slug');

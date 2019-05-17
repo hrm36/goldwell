@@ -16,7 +16,7 @@
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="#">Danh sách tin tức</a>
+				<a href="{{route('list-news')}}">Danh sách tin tức</a>
 			</li>
 			<li class="active">
 				<strong>Thông tin trang</strong>

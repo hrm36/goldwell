@@ -191,7 +191,7 @@
             </li>
 
             <li class={{$flag == "lienhe" ? "active" : ""}}>
-                <a href="#"><i class="fa fa-tty"></i> <span class="nav-label">CONTACT</span></a>
+                <a href="{{route('list-contact')}}"><i class="fa fa-tty"></i> <span class="nav-label">CONTACT</span></a>
             </li>
 
             <li class={{$flag == "lien_ket" || $flag == "banner" || $flag == "logo" 
