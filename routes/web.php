@@ -7,7 +7,7 @@
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| contains the "web" middleware group. Now create something great
 |
 */
 
@@ -87,6 +87,33 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         ->name('thong-tin-trang-td');
     });
 
+    /*
+        TUANNA START ADD 16-03-2019
+    */
+    //Quản lý bài viết tin tức
+    Route::prefix('news')->group(function () {
+        //quản lí bài viết
+        Route::get('/thong-tin-trang', 'NewController@getInfoTrangDanhMuc')->name('page-news');
+
+         //Thong tin trang
+        Route::get('/tao-moi', 'NewController@getCreate')->name('create-news');
+        Route::post('/tao-moi', 'NewController@postCreate')->name('create-news');
+
+        Route::get('/sua/{id}', 'NewController@getEdit')->name('edit-news');
+        Route::post('/sua/{id}', 'NewController@postEdit')->name('edit-news');
+
+        Route::get('/del/{id}', 'NewController@getDelete')->name('del-news');
+
+        Route::get('/danh-sach', 'NewController@index')->name('list-news');
+
+        Route::get('/thong-tin-trang/thay-doi', 'NewController@updateInfoTrangDanhMuc')
+        ->name('page-news-ed');
+        Route::post('/thong-tin-trang/thay-doi', 'NewController@storeInfoTrangDanhMuc')
+        ->name('page-news-ed');
+    });
+     /*
+        TUANNA START END 16-03-2019
+    */
     //Quản lý quy trình
     Route::prefix('quy-trinh')->group(function () {
         //quản lí trang liên kết

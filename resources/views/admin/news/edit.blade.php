@@ -19,22 +19,22 @@
 {{-- Breadcrumb --}}
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-sm-4">
-		<h2>Tạo mới sản phẩm</h2>
+		<h2>Thay đổi thông tin bài viết</h2>
 		<ol class="breadcrumb">
 			<li>
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="#">Danh sách sản phẩm</a>
+				<a href="{{route('list-sp')}}">Danh sách bài viết</a>
 			</li>
 			<li class="active">
-				<strong>Tạo mới sản phẩm</strong>
+				<strong>Thay đổi thông tin bài viết</strong>
 			</li>
 		</ol>
 	</div>
 	<div class="col-sm-8">
 		<div class="title-action">
-			<a href="#" class="btn btn-primary">Trở về danh sách sản phẩm</a>
+			<a href="#" class="btn btn-primary">Trở về danh sách bài viết</a>
 		</div>
 	</div>
 </div>
@@ -45,7 +45,7 @@
 	<div class="row animated fadeInRight">		
 		<div class="ibox float-e-margins">
 			<div class="ibox-title">
-				<h5>Thông tin sản phẩm mới</h5>
+				<h5>Thông tin bài viết</h5>
 				<div class="ibox-tools">
 					<a class="collapse-link">
 						<i class="fa fa-chevron-up"></i>
@@ -54,7 +54,7 @@
 			</div>
 			{{-- START FORM --}}
 			<div class="ibox-content">
-				<form id="form" class="form-horizontal" role="form" action="{{route('create-sp')}}" 
+				<form id="form" class="form-horizontal" role="form" action="{{route('update-sp',['slug'=>$product->slug])}}" 
 				enctype="multipart/form-data" method="POST">
 				@csrf
 				<div class="panel-group payments-method" id="accordion">
@@ -65,66 +65,28 @@
 								<a data-toggle="collapse" data-parent="#accordion" href="#style">Giao diện hiển thị</a>
 							</h5>
 						</div>
-						<div id="style" class="panel-collapse collapse">
-							<div class="panel-body">
-								<div class="ibox product-detail">
-									<div class="ibox-content">
-										<div class="row">
-											<div class="col-md-5">
-												<div class="product-images">
-													<div>
-														<img src="http://localhost:80/goldwell/public/source/top-nhung-hinh-anh-gai-dep-gai-xinh-nhat-hien-nay-15.png" style="max-width: 100%; max-height: 100%;">
-													</div>
-													<div>
-														<img src="http://localhost:80/goldwell/public/source/banner-1.jpg" style="max-width: 100%; max-height: 100%;">
-													</div>
-												</div>
-											</div>
-											<div class="col-md-7">
-												<h2 class="font-bold m-b-xs">
-													Chọn giao diện hiển thị cho sản phẩm mới
-												</h2>
-												<small>Xem mẫu giao diện ở slide bên cạnh và lựa chọn theo tên</small>
-												<hr>
-												<div class="text-left">
-													<div class="btn-group">
-														<input type="hidden" name="dis_type" id="dis_type" value='1'>
-														<a data-style=1 class="btn btn-success btn-sm choose-style">
-															<i class="fa fa-star"></i> Giao diện 1
-														</a>
-														<a data-style=2 class="btn btn-white btn-sm choose-style">
-															<i class="fa fa-star"></i> Giao diện 2
-														</a>
-													</div>
-												</div>                                				
-											</div>
-										</div>
-									</div>
-								</div>	                            	
-							</div>
-						</div>
 					</div>
 					<!-- -->
 					<!--Panel -->
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h5 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#info">Thông tin sản phẩm</a>
+								<a data-toggle="collapse" data-parent="#accordion" href="#info">Thông tin bài viết</a>
 							</h5>
 						</div>
 						<div id="info" class="panel-collapse collapse">
 							<div class="panel-body">
 								<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-									<label class="col-sm-2 control-label">Tên sản phẩm (*) </label>
+									<label class="col-sm-2 control-label">Tên bài viết (*) </label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="name" id="name" value="{{old('name')}}">
+										<input type="text" class="form-control" name="name" id="name" value="{{$product->name}}">
 									</div>
 								</div>
 
 								<div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Slug (*) </label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="slug" id="slug" value="{{old('slug')}}">
+										<input type="text" class="form-control" name="slug" id="slug" value="{{$product->slug}}">
 									</div>
 								</div>
 
@@ -132,79 +94,28 @@
 									<label class="col-sm-2 control-label">Miêu tả ngắn (*) </label>
 									<div class="col-sm-10">
 										<textarea name="des_s" id="des_s" class="form-control my-editor" rows="20" required>
-
+										{!! $product->des_s !!}
 										</textarea>
 									</div>
 								</div>
 
-								<div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
-									<label class="col-sm-2 control-label">Banner (*)</label>
-									<div class="col-sm-10">
-										<div class="input-group">
-											<span class="input-group-btn">
-												<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
-												class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
-												class="fa fa-picture-o"></i>Chọn ảnh</a>
-											</span>
-											<input id="thumb_0" class="form-control" type="text" name="image" required>
-										</div>
-										<div id="preview">
-
-										</div>
-									</div>
-								</div>
 
 								<div class="form-group {{ $errors->has('des_f') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Miêu tả chi tiết (*) </label>
 									<div class="col-sm-10">
 										<textarea name="des_f" id="des_f" class="form-control my-editor" rows="20" required>
-
+											{!! $product->des_f !!}
 										</textarea>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Danh mục(*)</label>
-
-									<div class="col-md-4">
-										<select class="form-control m-b" name="cat_id">
-											<option value="1">Danh mục 1</option>
-											<option value="2">Danh mục 2</option>
-										</select>                                       
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Sản phẩm bổ trợ</label>
-									<div class="col-md-4">
-										<select class="select2_demo_2 form-control" name="sp_botro[]" multiple="multiple">
-	                                        <option value="Mayotte">Mayotte</option>
-	                                        <option value="Mexico">Mexico</option>
-	                                        <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
-	                                        <option value="Moldova, Republic of">Moldova, Republic of</option>
-	                                        <option value="Monaco">Monaco</option>
-	                                        <option value="Mongolia">Mongolia</option>
-	                                        <option value="Montenegro">Montenegro</option>
-	                                        <option value="Montserrat">Montserrat</option>
-	                                        <option value="Morocco">Morocco</option>
-	                                        <option value="Mozambique">Mozambique</option>
-	                                        <option value="Myanmar">Myanmar</option>
-	                                        <option value="Namibia">Namibia</option>
-	                                        <option value="Nauru">Nauru</option>
-	                                        <option value="Nepal">Nepal</option>
-	                                        <option value="Netherlands">Netherlands</option>
-	                                        <option value="New Caledonia">New Caledonia</option>
-	                                        <option value="New Zealand">New Zealand</option>
-	                                        <option value="Nicaragua">Nicaragua</option>
-	                                    </select>	                                           
-									</div>
-								</div>
-								<div class="form-group">
 									<label class="col-sm-2 control-label">Trạng thái (*)</label>
 
 									<div class="col-md-4">
 										<select class="form-control m-b" name="status">
-											<option value="1">Công khai</option>
-											<option value="0">Không công khai</option>
+											<option {{$product->status == 1 ? "selected" : ""}} value="1">Công khai</option>
+											<option {{$product->status == 0 ? "selected" : ""}} value="0">Không công khai</option>
 										</select>                                       
 									</div>
 								</div>	 	                            	
@@ -239,7 +150,6 @@
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script>
 	var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
-	
 	$(document).ready(function()
 	{
 		$(".choose-style").on('click', function() {
@@ -254,6 +164,7 @@
 		  $( this ).addClass("btn-success");
 		  $("#dis_type").val(style);
 		});
+
 		CKEDITOR.replace( 'des_f' ,{
 			filebrowserBrowseUrl : fmPath,
 			filebrowserUploadUrl : fmPath,

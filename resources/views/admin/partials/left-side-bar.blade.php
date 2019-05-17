@@ -59,7 +59,7 @@
                         <a href="#">Công nghệ</a>
                     </li>
                     <li class={{$flag == "cat_p_l" || $flag == "cat_p_n" ? "active" : ""}}>
-                        <a href="#">Danh mục Product<span class="fa arrow"></span></a>
+                        <a href="{{route('thong-tin-trang')}}">Danh mục Product<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li class={{$flag == "cat_p_l" ? "active" : ""}}>
                                 <a href="{{route('list-dm')}}">Danh sách</a>
@@ -78,19 +78,19 @@
             </li>
 
             <li class={{$flag == "news_l" || $flag == "news_n" || $flag == "setup_news" ? "active" : ""}}>
-                <a href="#"><i class="fa fa-newspaper-o"></i> 
+                <a href="{{route('page-news')}}"><i class="fa fa-newspaper-o"></i> 
                     <span class="nav-label">NEWS & EVENTS</span>
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level collapse">
                     <li class={{$flag == "setup_news" ? "active" : ""}}>
-                        <a href="#">Giao diện trang</a>
+                        <a href="{{route('page-news')}}">Giao diện trang</a>
                     </li>
                     <li class={{$flag == "news_l" ? "active" : ""}}>
-                        <a href="#">Danh sách</a>
+                        <a href="{{route('list-news')}}">Danh sách</a>
                     </li>
                     <li class={{$flag == "news_n" ? "active" : ""}}>
-                        <a href="#">Thêm mới</a>
+                        <a href="{{route('create-news')}}">Thêm mới</a>
                     </li>
                 </ul>                   
             </li>
