@@ -224,6 +224,7 @@ span.select2.select2-container.select2-container--default{
 <script src="{{asset('assets/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/js/hrm.js')}}"></script>
 <script>
 	var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
 	

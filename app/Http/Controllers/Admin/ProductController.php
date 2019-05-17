@@ -58,7 +58,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $list_p = Product::all();
+        $list_p = Product::where('status', 1)->get();
         $cat_p_ = Cat::where('status',1)->where('type',0)->get();
         return view('admin.products.create',['cat'=> $cat_p_ , 'list'=> $list_p , 'flag' => 'p_n']);
     }

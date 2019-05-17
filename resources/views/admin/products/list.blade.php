@@ -35,7 +35,7 @@
 	<div class="row animated fadeInRight">
 		<div class="ibox float-e-margins">
 			<div class="ibox-title">
-				<h5>Tất cả danh mục</h5>
+				<h5>Tất cả sản phẩm</h5>
 				<div class="ibox-tools">
 					<a class="collapse-link">
 						<i class="fa fa-chevron-up"></i>
@@ -48,14 +48,18 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th class="text-center">Tên danh mục</th>
-								<th class="text-center">Danh mục cha</th>
+								<th class="text-center">ID</th>
+								<th class="text-center">Ảnh đại diện</th>
+								<th class="text-center">Tên sản phẩm</th>
+								<th class="text-center">Mô tả</th>
 								<th class="text-center">Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($products as $p)
 								<tr>
+									<td class="text-center">{{$p->id}}</td>
+									<td class="text-center"><img src="{{$p->image}}" style="max-width:90px"></td>
 									<td class="text-center">{{$p->name}}</td>					
                                     <td class="text-center">{!! $p->des_s !!}</td>
 									<td class="text-center">

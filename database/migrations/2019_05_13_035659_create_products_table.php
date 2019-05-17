@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('dis_type');
             $table->string('slug')->unique();
             $table->text('image');
-            $table->text('sp_botro');
+            $table->text('sp_botro')->nullable();
             $table->text('des_s');
             $table->text('des_f');
             $table->boolean('status');
