@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use Illuminate\Support\Str;
+
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     /**
      * Show the application dashboard.
      *
@@ -16,11 +27,9 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function trangChu()
+    public function createSlug(Request $request)
     {
-        $_product = config('product.thong-tin');
-        $_news = config('news.thong-tin');
-        $_list_product = Product::take(5)->get();
-        return view('welcome',['info_p'=>$_product, 'info_new'=>$_news, 'l_product'=>$_list_product]);
+        $slug = Str::slug($request->str, '-');
+        return response()->json(array('slug'=>$slug), 200);
     }
 }

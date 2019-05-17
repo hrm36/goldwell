@@ -16,10 +16,10 @@
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="{{route('page-news')}}">Thông tin trang tin tức</a>
+				<a href="{{route('page-color')}}">Thông tin trang</a>
 			</li>
 			<li class="active">
-				<strong>Thay đổi thông tin trang tin tức</strong>
+				<strong>Thay đổi thông tin trang</strong>
 			</li>
 		</ol>
 	</div>
@@ -39,7 +39,7 @@
 	<div class="row animated fadeInRight">
 		<div class="ibox float-e-margins">
 			<div class="ibox-title">
-				<h5>Thông tin trang tin tức</h5>
+				<h5>Thông tin trang</h5>
 				<div class="ibox-tools">
 					<a class="collapse-link">
 						<i class="fa fa-chevron-up"></i>
@@ -62,7 +62,7 @@
 					{{ $message }}
 				</div>
 				@endif
-				<form class="form-horizontal" role="form" action="{{route('page-news-ed')}}" 
+				<form class="form-horizontal" role="form" action="{{route('page-color-ed')}}" 
 				enctype="multipart/form-data" method="POST">
 				@csrf
 				<div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">

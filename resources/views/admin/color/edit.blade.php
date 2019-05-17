@@ -25,7 +25,7 @@
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="{{route('list-news')}}">Danh sách bài viết</a>
+				<a href="{{route('list-color')}}">Danh sách bài viết</a>
 			</li>
 			<li class="active">
 				<strong>Thay đổi thông tin bài viết</strong>
@@ -34,7 +34,7 @@
 	</div>
 	<div class="col-sm-8">
 		<div class="title-action">
-			<a href="{{route('list-news')}}" class="btn btn-primary">Trở về danh sách bài viết</a>
+			<a href="{{route('list-color')}}" class="btn btn-primary">Trở về danh sách bài viết</a>
 		</div>
 	</div>
 </div>
@@ -72,7 +72,7 @@
                                 <strong>{{session('thongbao')}}</strong>
                             </div>
                         @endif
-				<form id="form" class="form-horizontal" role="form" action="{{route('edit-news',['id'=>$news->id])}}" 
+				<form id="form" class="form-horizontal" role="form" action="{{route('edit-color',['id'=>$color->id])}}" 
 				enctype="multipart/form-data" method="POST">
 				@csrf
 				<div class="panel-group-payments-method">
@@ -83,7 +83,7 @@
 								<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Tên bài viết (*) </label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="name" id="name" value="{{$news->name}}">
+										<input type="text" class="form-control" name="name" id="name" value="{{$color->name}}">
 									</div>
 								</div>
 								<div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
@@ -95,17 +95,17 @@
 												class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
 												class="fa fa-picture-o"></i>Chọn ảnh</a>
 											</span>
-											<input id="thumb_0" class="form-control" type="text" name="image" value="{{$news->image}}" required>
+											<input id="thumb_0" class="form-control" type="text" name="image" value="{{$color->image}}" required>
 										</div>
 										<div id="preview" style="display: block;margin-bottom: 20px">
-											<div class="img_preview"><img src="{{$news->image}}"/>
+											<div class="img_preview"><img src="{{$color->image}}"/>
 										</div>
 									</div>
 								</div>
 								<div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Slug (*) </label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="slug" id="slug" value="{{$news->slug}}">
+										<input type="text" class="form-control" name="slug" id="slug" value="{{$color->slug}}">
 									</div>
 								</div>
 
@@ -113,7 +113,7 @@
 									<label class="col-sm-2 control-label">Miêu tả ngắn (*) </label>
 									<div class="col-sm-10">
 										<textarea name="des_s" id="des_s" class="form-control my-editor" rows="20" required>
-										{!! $news->des_s !!}
+										{!! $color->des_s !!}
 										</textarea>
 									</div>
 								</div>
@@ -123,7 +123,7 @@
 									<label class="col-sm-2 control-label">Miêu tả chi tiết (*) </label>
 									<div class="col-sm-10">
 										<textarea name="des_f" id="des_f" class="form-control my-editor" rows="20" required>
-											{!! $news->des_f !!}
+											{!! $color->des_f !!}
 										</textarea>
 									</div>
 								</div>
@@ -133,8 +133,8 @@
 
 									<div class="col-md-4">
 										<select class="form-control m-b" name="status">
-											<option {{$news->status == 1 ? "selected" : ""}} value="1">Công khai</option>
-											<option {{$news->status == 0 ? "selected" : ""}} value="0">Không công khai</option>
+											<option {{$color->status == 1 ? "selected" : ""}} value="1">Công khai</option>
+											<option {{$color->status == 0 ? "selected" : ""}} value="0">Không công khai</option>
 										</select>                                       
 									</div>
 								</div>	 	                            	

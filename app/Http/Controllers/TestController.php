@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Cat;
-use App\Http\Requests\CatRequest as CatRequest;
-class CatController extends Controller
+
+class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,6 @@ class CatController extends Controller
     public function index()
     {
         //
-        $cats = Cat::where('status',1)->get();
-        return view('admin.cats.list',['cats'=>$cats], ['flag'=>'cat_p_l']);
     }
 
     /**
@@ -25,17 +22,9 @@ class CatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function getcreate()
+    public function create()
     {
-        $cat_p_ = Cat::where('status',1)->where('type',0)->get();
-        return view('admin.cats.create',['cat'=> $cat_p_ , 'flag' => 'cat_p_n']);
-    }
-   
-    public function postcreate()
-    {
-        $cat = Cat::create($request->all());
-        $cat->save();
-        return redirect(route('create-dm'))->with('thongbao','Thêm bài viết mới thành công!');
+        //
     }
 
     /**

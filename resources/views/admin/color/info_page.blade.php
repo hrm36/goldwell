@@ -16,7 +16,7 @@
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="{{route('list-news')}}">Danh sách tin tức</a>
+				<a href="{{route('list-color')}}">Danh sách bài viết</a>
 			</li>
 			<li class="active">
 				<strong>Thông tin trang</strong>
@@ -39,7 +39,7 @@
 	<div class="row animated fadeInRight">
 		<div class="ibox float-e-margins">
 			<div class="ibox-title">
-				<h5>Thông tin trang tin tức</h5>
+				<h5>Thông tin trang</h5>
 				<div class="ibox-tools">
 					<a class="collapse-link">
 						<i class="fa fa-chevron-up"></i>
@@ -63,6 +63,7 @@
 								{{$info['title']}}
 							</h2>
 							<hr>
+
 							<h4>Nội dung</h4>
 
 							<div class="small text-muted">
@@ -71,10 +72,10 @@
 							<hr>
 							<div>
 								<div class="btn-group">
-									<a href="{{route('page-news-ed')}}" class="btn btn-warning btn-sm">
+									<a href="{{route('page-color-ed')}}" class="btn btn-warning btn-sm">
 										<i class="fa fa-edit"></i> Thay đổi thông tin
 									</a>
-									<a href="{{route('news')}}" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> Xem trang</a>
+									<a href="{{route('color-room')}}" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> Xem trang</a>
 								</div>
 							</div>                           				
 						</div>

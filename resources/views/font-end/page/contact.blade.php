@@ -4,14 +4,14 @@
 	<div class="container">
 		<div class="breadcrumb-paginator-wrapper">
 			<div id="breadcrumb">
-				<a href="/">GOLDWELL</a>
+				<a href="{{route('homepage')}}">GOLDWELL</a>
 				<span class="spacer3"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-				<a href="/">CONTACT</a>
+				<a href="{{route('contact')}}">CONTACT</a>
 			</div>
 		</div>
 		<div class="header-page col-md-12">
-			<h1>GET IN TOUCH</h1>
-			<p class="bodytext">Questions or Feedback? Please fill out the following form and we will contact you as soon as possible.</p>
+			<h1>LIÊN LẠC</h1>
+			<p class="bodytext">Câu hỏi hay phản hồi? Vui lòng điền vào mẫu dưới đây và chúng tôi sẽ liên lạc với bạn sớm nhất có thể.</p>
 		</div>
 		<div class="list-content">	
 			<div class="form-rg">

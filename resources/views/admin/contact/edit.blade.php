@@ -16,7 +16,7 @@ Sửa thông tin liên hệ
 		<h2>Sửa thông tin liên hệ: {{$contact->name}}</h2>
 		<ol class="breadcrumb">
 			<li>
-				<a href="#">Home</a>
+				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
 				<a>Danh sách liên hệ</a>

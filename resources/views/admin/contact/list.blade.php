@@ -16,7 +16,7 @@ Danh sách thông tin liên hệ
 		<h2>Danh sách thông tin liên hệ</h2>
 		<ol class="breadcrumb">
 			<li>
-				<a href="#">Home</a>
+				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
 				<a>Danh sách liên hệ</a>
@@ -25,21 +25,8 @@ Danh sách thông tin liên hệ
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<div class="ibox-tools">
-						<a class="collapse-link">
-							<i class="fa fa-chevron-up"></i>
-						</a>
-					</div>
-				</div>
-				<div class="ibox-content">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-								<button type="button" class="btn btn-sm btn-primary"> Tìm kiếm</button> </span></div>
-							</div>
-						</div>
+			<div class="ibox float-e-margins" style="margin-top: 20px;">
+				<div class="ibox-content-c col-lg-12">
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
