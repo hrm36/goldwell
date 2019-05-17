@@ -53,36 +53,37 @@
 					</ul>
 				</div>
 				@endif
-				@if (isset($message))
+				@if(session('thongbao'))
 				<div class="alert alert-success">
-					{{ $message }}
+					<strong>{{session('thongbao')}}</strong>
 				</div>
 				@endif
 				<form class="form-horizontal" role="form" action="{{route('create-dm')}}" 
 				enctype="multipart/form-data" method="POST">
-					<div class="form-group">
+					<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Tên chuyên mục</label>
 						<div class="col-md-4">
-							<input type="text" class="form-control" name="name" id="name" required>                                
+							<input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" required>                              
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Slug</label>
 						<div class="col-md-4">
-							<input type="text" class="form-control" name="slug" id="slug" required>                                
+							<input type="text" class="form-control" name="slug" id="slug" value="{{old('slug')}}" required>                                
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group {{ $errors->has('cat_id') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Chuyên mục cha</label>
 						<div class="col-md-4">
 							<select class="form-control m-b" name="cat_id" id="cat_id" required>
+								<option value="">Chọn chuyên mục</option>
 								@foreach($cat as $p)
-									<option value="{{$p->cats_id}}">{{$p->name}}</option>
+									<option value="{{$p->id}}">{{$p->name}}</option>
 								@endforeach
 							</select>                                       
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group {{ $errors->has('type') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Loại chuyên mục</label>
 						<div class="col-md-4">
 							<select class="form-control m-b" name="type" id="type" required>
@@ -91,7 +92,7 @@
 							</select>                                       
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Trạng thái</label>
 						<div class="col-md-4">
 							<select class="form-control m-b" name="status" id="status" required>

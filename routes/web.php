@@ -194,3 +194,4 @@ Auth::routes();
 
 Route::get('/home', '\App\Http\Controllers\Admin\ProductController@index')->name('home');
 Route::post('/create-slug', 'HomeController@createSlug')->name('create-slug');
+Route::get('/create-slug', 'HomeController@createSlug')->name('create-slug');

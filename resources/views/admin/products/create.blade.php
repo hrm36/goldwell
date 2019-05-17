@@ -8,9 +8,9 @@
 <link rel="stylesheet" href="{{asset('assets/fancybox/source/jquery.fancybox.css')}}">
 <link href="{{asset('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
 <style type="text/css">
-	span.select2.select2-container.select2-container--default{
-		width:100% !important;
-	}
+span.select2.select2-container.select2-container--default{
+	width:100% !important;
+}
 </style>
 @stop
 
@@ -167,35 +167,22 @@
 									<label class="col-sm-2 control-label">Danh mục(*)</label>
 
 									<div class="col-md-4">
-										<select class="form-control m-b" name="cat_id">
-											<option value="1">Danh mục 1</option>
-											<option value="2">Danh mục 2</option>
-										</select>                                       
+										<select class="form-control m-b" name="cat_id" id="cat_id" required>
+											<option value="">Chọn chuyên mục</option>
+											@foreach($cat as $p)
+												<option value="{{$p->id}}">{{$p->name}}</option>
+											@endforeach
+										</select>                                         
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Sản phẩm bổ trợ</label>
 									<div class="col-md-4">
 										<select class="select2_demo_2 form-control" name="sp_botro[]" multiple="multiple">
-	                                        <option value="Mayotte">Mayotte</option>
-	                                        <option value="Mexico">Mexico</option>
-	                                        <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
-	                                        <option value="Moldova, Republic of">Moldova, Republic of</option>
-	                                        <option value="Monaco">Monaco</option>
-	                                        <option value="Mongolia">Mongolia</option>
-	                                        <option value="Montenegro">Montenegro</option>
-	                                        <option value="Montserrat">Montserrat</option>
-	                                        <option value="Morocco">Morocco</option>
-	                                        <option value="Mozambique">Mozambique</option>
-	                                        <option value="Myanmar">Myanmar</option>
-	                                        <option value="Namibia">Namibia</option>
-	                                        <option value="Nauru">Nauru</option>
-	                                        <option value="Nepal">Nepal</option>
-	                                        <option value="Netherlands">Netherlands</option>
-	                                        <option value="New Caledonia">New Caledonia</option>
-	                                        <option value="New Zealand">New Zealand</option>
-	                                        <option value="Nicaragua">Nicaragua</option>
-	                                    </select>	                                           
+											@foreach($list as $p)
+												<option value="{{$p->id}}">{{$p->name}}</option>
+											@endforeach
+										</select>	                                           
 									</div>
 								</div>
 								<div class="form-group">
@@ -246,9 +233,9 @@
 		  //  ret = DetailsView.GetProject($(this).attr("#data-id"), OnComplete, OnTimeOut, OnError);
 		  style = $(this).attr("data-style");
 		  $(".choose-style").each(function( index ) {
-			  $( this ).removeClass("btn-success");
-			  $( this ).removeClass("btn-white");
-			  $( this ).addClass("btn-white");
+		  	$( this ).removeClass("btn-success");
+		  	$( this ).removeClass("btn-white");
+		  	$( this ).addClass("btn-white");
 		  });
 		  $( this ).removeClass("btn-white");
 		  $( this ).addClass("btn-success");

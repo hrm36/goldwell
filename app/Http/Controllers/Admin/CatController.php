@@ -31,11 +31,11 @@ class CatController extends Controller
         return view('admin.cats.create',['cat'=> $cat_p_ , 'flag' => 'cat_p_n']);
     }
    
-    public function postcreate()
+    public function postcreate(CatRequest $request)
     {
         $cat = Cat::create($request->all());
         $cat->save();
-        return redirect(route('create-dm'))->with('thongbao','Thêm bài viết mới thành công!');
+        return redirect(route('create-dm'))->with('thongbao','Thêm chuyên mục mới thành công!');
     }
 
     /**

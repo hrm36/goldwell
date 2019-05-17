@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductInfoCatRequest as InfoRequest;
 use App\Http\Requests\ProductRequest as ProductRequest;
 use App\Product;
+use App\Cat;
+use App\Http\Requests\CatRequest as CatRequest;
 
 class ProductController extends Controller
 {
@@ -56,7 +58,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create',['flag' => 'p_n']);
+        $list_p = Product::all();
+        $cat_p_ = Cat::where('status',1)->where('type',0)->get();
+        return view('admin.products.create',['cat'=> $cat_p_ , 'list'=> $list_p , 'flag' => 'p_n']);
     }
 
     /**
