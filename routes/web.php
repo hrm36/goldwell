@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@trangChu')->name('welcome');
 /*
 TUANNA START ADD 15-03-2019
  */
