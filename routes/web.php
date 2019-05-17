@@ -79,7 +79,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::get('/{slug}/xoa', '\App\Http\Controllers\Admin\ProductController@destroy')->name('delete-sp');
 
         //Thong tin trang danh muc san pham
-        Route::get('/danh-muc/tao-moi', '\App\Http\Controllers\Admin\CatController@create')->name('create-dm');
+        Route::get('/danh-muc/tao-moi', '\App\Http\Controllers\Admin\CatController@getcreate')->name('create-dm');
+        Route::post('/danh-muc/tao-moi', '\App\Http\Controllers\Admin\CatController@postcreate')->name('create-dm');
+
         Route::get('/danh-muc/danh-sach', '\App\Http\Controllers\Admin\CatController@index')->name('list-dm');
 
         //quy trinh san pham
