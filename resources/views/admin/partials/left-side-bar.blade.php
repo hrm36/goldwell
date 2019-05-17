@@ -113,20 +113,20 @@
                 </ul>                   
             </li>
 
-            <li class={{$flag == "color_z_l" || $flag == "color_z_n" || $flag == "setup_color_z" ? "active" : ""}}>
-                <a href="#"><i class="fa fa-yelp"></i> 
-                    <span class="nav-label">COLOR ZOOM 2019</span>
+            <li class={{$flag == "color_l" || $flag == "color_n" || $flag == "setup_color" ? "active" : ""}}>
+                <a href="{{route('page-color')}}"><i class="fa fa-yelp"></i> 
+                    <span class="nav-label">COLOR ZOOM</span>
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level collapse">
-                    <li class={{$flag == "setup_color_z" ? "active" : ""}}>
-                        <a href="#">Giao diện trang</a>
+                    <li class={{$flag == "setup_color" ? "active" : ""}}>
+                        <a href="{{route('page-color')}}">Giao diện trang</a>
                     </li>
-                    <li class={{$flag == "color_z_l" ? "active" : ""}}>
-                        <a href="#">Danh sách</a>
+                    <li class={{$flag == "color_l" ? "active" : ""}}>
+                        <a href="{{route('list-color')}}">Danh sách</a>
                     </li>
-                    <li class={{$flag == "color_z_n" ? "active" : ""}}>
-                        <a href="#">Thêm mới</a>
+                    <li class={{$flag == "color_n" ? "active" : ""}}>
+                        <a href="{{route('create-color')}}">Thêm mới</a>
                     </li>
                 </ul>                   
             </li>

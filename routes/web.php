@@ -26,6 +26,9 @@ Route::get('/news', function () {
 Route::get('/brand', function () {
     return view('font-end.page.brand');
 })->name('brand');
+Route::get('/color-room', function () {
+    return view('font-end.page.brand');
+})->name('color-room');
 Route::get('/post', function () {
     return view('font-end.page.single-post');
 })->name('post');
@@ -136,6 +139,28 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         ->name('page-brand-ed');
         Route::post('/thong-tin-trang/thay-doi', 'BrandController@storeInfoTrangDanhMuc')
         ->name('page-brand-ed');
+    });
+
+    //Quản lý Color Room
+    Route::prefix('color')->group(function () {
+        //quản lí bài viết
+        Route::get('/thong-tin-trang', 'ColorRoomController@getInfoTrangDanhMuc')->name('page-color');
+
+         //Thong tin trang
+        Route::get('/tao-moi', 'ColorRoomController@getCreate')->name('create-color');
+        Route::post('/tao-moi', 'ColorRoomController@postCreate')->name('create-color');
+
+        Route::get('/sua/{id}', 'ColorRoomController@getEdit')->name('edit-color');
+        Route::post('/sua/{id}', 'ColorRoomController@postEdit')->name('edit-color');
+
+        Route::get('/del/{id}', 'ColorRoomController@getDelete')->name('del-color');
+
+        Route::get('/danh-sach', 'ColorRoomController@index')->name('list-color');
+
+        Route::get('/thong-tin-trang/thay-doi', 'ColorRoomController@updateInfoTrangDanhMuc')
+        ->name('page-color-ed');
+        Route::post('/thong-tin-trang/thay-doi', 'ColorRoomController@storeInfoTrangDanhMuc')
+        ->name('page-color-ed');
     });
      /*
         TUANNA START END 16-03-2019
