@@ -4,13 +4,7 @@
 <section id="content-home">
     <div class="container">
         <div class="list-item-home">
-            @include("font-end.partials.item-home")
-            @include("font-end.partials.item-home")
-            @include("font-end.partials.item-home")
-            @include("font-end.partials.item-home")
-            @include("font-end.partials.item-home")
-            @include("font-end.partials.item-home")
-            @include("font-end.partials.item-home")
+            @include('font-end.partials.item-home', array('name' => $info_p['title'], 'image'=> $info_p['image'], 'link'=> ""))
         </div>
     </div>
 </section>

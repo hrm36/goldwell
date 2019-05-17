@@ -56,7 +56,7 @@
 						<tbody>
 							@foreach($products as $p)
 								<tr>
-									<td class="text-center">{{$c->name}}</td>					
+									<td class="text-center">{{$p->name}}</td>					
                                     <td class="text-center">{!! $p->des_s !!}</td>
 									<td class="text-center">
 										<a href="{{route('update-sp',['slug'=>$p->slug])}}" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
