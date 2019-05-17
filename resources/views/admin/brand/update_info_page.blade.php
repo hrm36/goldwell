@@ -16,7 +16,7 @@
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="{{route('page-news')}}">Thông tin trang tin tức</a>
+				<a href="{{route('page-brand')}}">Thông tin trang</a>
 			</li>
 			<li class="active">
 				<strong>Thay đổi thông tin trang tin tức</strong>
@@ -62,7 +62,7 @@
 					{{ $message }}
 				</div>
 				@endif
-				<form class="form-horizontal" role="form" action="{{route('page-news-ed')}}" 
+				<form class="form-horizontal" role="form" action="{{route('page-brand-ed')}}" 
 				enctype="multipart/form-data" method="POST">
 				@csrf
 				<div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">

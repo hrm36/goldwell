@@ -25,7 +25,7 @@ span.select2.select2-container.select2-container--default{
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="{{route('list-news')}}">Danh sách bài viết</a>
+				<a href="{{route('list-brand')}}">Danh sách bài viết</a>
 			</li>
 			<li class="active">
 				<strong>Tạo mới bài viết</strong>
@@ -34,7 +34,7 @@ span.select2.select2-container.select2-container--default{
 	</div>
 	<div class="col-sm-8">
 		<div class="title-action">
-			<a href="{{route('list-news')}}" class="btn btn-primary">Trở về danh sách bài viết</a>
+			<a href="{{route('list-brand')}}" class="btn btn-primary">Trở về danh sách bài viết</a>
 		</div>
 	</div>
 </div>
@@ -72,7 +72,7 @@ span.select2.select2-container.select2-container--default{
 					<strong>{{session('thongbao')}}</strong>
 				</div>
 				@endif
-				<form id="form" class="form-horizontal" role="form" action="{{route('create-news')}}" 
+				<form id="form" class="form-horizontal" role="form" action="{{route('create-brand')}}" 
 				enctype="multipart/form-data" method="POST">
 				@csrf
 				<!--Panel -->
@@ -167,11 +167,11 @@ span.select2.select2-container.select2-container--default{
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/hrm.js')}}"></script>
 <script>
-	var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
+var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
 
-	$(document).ready(function()
-	{
-		$(".choose-style").on('click', function() {
+$(document).ready(function()
+{
+	$(".choose-style").on('click', function() {
 		  //  ret = DetailsView.GetProject($(this).attr("#data-id"), OnComplete, OnTimeOut, OnError);
 		  style = $(this).attr("data-style");
 		  $(".choose-style").each(function( index ) {
@@ -183,38 +183,38 @@ span.select2.select2-container.select2-container--default{
 		  $( this ).addClass("btn-success");
 		  $("#dis_type").val(style);
 		});
-		CKEDITOR.replace( 'des_f' ,{
-			filebrowserBrowseUrl : fmPath,
-			filebrowserUploadUrl : fmPath,
-			filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-		});
-
-		CKEDITOR.replace( 'des_s' ,{
-			filebrowserBrowseUrl : fmPath,
-			filebrowserUploadUrl : fmPath,
-			filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-		});
-		$('#iframe-btn-0').fancybox({
-			'width': 900,
-			'height': 900,
-			'type': 'iframe',
-			'autoScale': false,
-			'autoSize': false,
-			afterClose: function () {
-				var thumb = $('#thumb_0').val();
-				if (thumb) {
-					var html = '<div class="img_preview"><img src="' + thumb + '"/>';
-					html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
-					$('#preview').html(html);
-				}
-			}
-		});
-
-		$('.product-images').slick({
-			dots: true
-		});
-
-		$(".select2_demo_2").select2();
+	CKEDITOR.replace( 'des_f' ,{
+		filebrowserBrowseUrl : fmPath,
+		filebrowserUploadUrl : fmPath,
+		filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
 	});
+
+	CKEDITOR.replace( 'des_s' ,{
+		filebrowserBrowseUrl : fmPath,
+		filebrowserUploadUrl : fmPath,
+		filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+	});
+	$('#iframe-btn-0').fancybox({
+		'width': 900,
+		'height': 900,
+		'type': 'iframe',
+		'autoScale': false,
+		'autoSize': false,
+		afterClose: function () {
+			var thumb = $('#thumb_0').val();
+			if (thumb) {
+				var html = '<div class="img_preview"><img src="' + thumb + '"/>';
+				html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
+				$('#preview').html(html);
+			}
+		}
+	});
+
+	$('.product-images').slick({
+		dots: true
+	});
+
+	$(".select2_demo_2").select2();
+});
 </script>
 @stop

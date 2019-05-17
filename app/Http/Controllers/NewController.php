@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\News;
 use App\Http\Requests\NewsRequest as NewsRequest;
-
+use App\Http\Requests\NewsInfoCatRequest as InfoRequest;
 class NewController extends Controller
 {
     

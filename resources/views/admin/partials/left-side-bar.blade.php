@@ -102,13 +102,13 @@
                 </a>
                 <ul class="nav nav-second-level collapse">
                     <li class={{$flag == "setup_brand" ? "active" : ""}}>
-                        <a href="#">Giao diện trang</a>
+                        <a href="{{route('page-brand')}}">Giao diện trang</a>
                     </li>
                     <li class={{$flag == "brand_l" ? "active" : ""}}>
-                        <a href="#">Danh sách</a>
+                        <a href="{{route('list-brand')}}">Danh sách</a>
                     </li>
                     <li class={{$flag == "brand_n" ? "active" : ""}}>
-                        <a href="#">Thêm mới</a>
+                        <a href="{{route('create-brand')}}">Thêm mới</a>
                     </li>
                 </ul>                   
             </li>

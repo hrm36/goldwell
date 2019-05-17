@@ -23,6 +23,9 @@ Route::get('/product', function () {
 Route::get('/news', function () {
     return view('font-end.page.news');
 })->name('news');
+Route::get('/brand', function () {
+    return view('font-end.page.brand');
+})->name('brand');
 Route::get('/post', function () {
     return view('font-end.page.single-post');
 })->name('post');
@@ -114,7 +117,26 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     });
 
     //Quản lý Brand
-    Route::resource('brand', 'BrandController');
+    Route::prefix('brand')->group(function () {
+        //quản lí bài viết
+        Route::get('/thong-tin-trang', 'BrandController@getInfoTrangDanhMuc')->name('page-brand');
+
+         //Thong tin trang
+        Route::get('/tao-moi', 'BrandController@getCreate')->name('create-brand');
+        Route::post('/tao-moi', 'BrandController@postCreate')->name('create-brand');
+
+        Route::get('/sua/{id}', 'BrandController@getEdit')->name('edit-brand');
+        Route::post('/sua/{id}', 'BrandController@postEdit')->name('edit-brand');
+
+        Route::get('/del/{id}', 'BrandController@getDelete')->name('del-brand');
+
+        Route::get('/danh-sach', 'BrandController@index')->name('list-brand');
+
+        Route::get('/thong-tin-trang/thay-doi', 'BrandController@updateInfoTrangDanhMuc')
+        ->name('page-brand-ed');
+        Route::post('/thong-tin-trang/thay-doi', 'BrandController@storeInfoTrangDanhMuc')
+        ->name('page-brand-ed');
+    });
      /*
         TUANNA START END 16-03-2019
     */
