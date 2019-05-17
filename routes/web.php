@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('homepage');
+Route::get('/', 'HomeController@homePage')->name('homepage');
 /*
 TUANNA START ADD 15-03-2019
  */
@@ -194,4 +192,3 @@ Auth::routes();
 
 Route::get('/home', '\App\Http\Controllers\Admin\ProductController@index')->name('home');
 Route::post('/create-slug', 'HomeController@createSlug')->name('create-slug');
-Route::get('/create-slug', 'HomeController@createSlug')->name('create-slug');

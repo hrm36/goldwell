@@ -32,4 +32,13 @@ class HomeController extends Controller
         $slug = Str::slug($request->str, '-');
         return response()->json(array('slug'=>$slug), 200);
     }
+
+    public function homePage()
+    {
+        $_info_p = config('product.thong-tin');
+        $_info_n = config('news.thong-tin');
+        $_info_b = config('brand.thong-tin');
+        $_info_c = config('color.thong-tin');
+        return view('welcome', ['p'=>$_info_p, 'n'=>$_info_n, 'b'=>$_info_b, 'c'=>$_info_c]);
+    }
 }

@@ -21,7 +21,7 @@
 		<div class="col-md-4">
 			<div class="logo">
 				<h1>
-					<a href="{{route('welcome')}}">
+					<a href="{{route('homepage')}}">
 						<img src="https://www.goldwell.us/typo3conf/ext/gldw_config/Resources/Public/Templates/gfx/frontend/images/goldwell_logo.svg" alt="">
 					</a>
 				</h1>
