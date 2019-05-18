@@ -1,6 +1,6 @@
 
 function creatSlug(_str, _element) {
-    var url_ =  "http://localhost/goldwell/public/create-slug";
+    var url_ =  "http://localhost/hrm-projects/goldwell/public/create-slug";
     $.ajax({
       type: "POST",
       data: {"_token": $('meta[name="csrf-token"]').attr('content'),"str": _str},

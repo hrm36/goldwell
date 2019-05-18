@@ -9,7 +9,7 @@ class Cat extends Model
     //
     protected $appends = ['parent'];
     protected $fillable = [
-        'name','slug','cat_id','type', 'status'
+        'name','slug','cat_id','type', 'status',
     ];
     public function product()
     {

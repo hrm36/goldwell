@@ -12,22 +12,16 @@
 */
 
 Route::get('/', 'HomeController@homePage')->name('homepage');
-Route::get('/brand', 'HomeController@brand')->name('brand');
+Route::get('/brand', 'HomeController@listPost')->name('brand');
+Route::get('/news', 'HomeController@listPost')->name('news');
+Route::get('/products', 'HomeController@listPost')->name('products');
+Route::get('/color-zoom', 'HomeController@listPost')->name('color');
+Route::get('/news/{slug}', 'HomeController@showPost')->name('show-new');
+Route::get('/brand/{slug}', 'HomeController@showPost')->name('show-brand');
+Route::get('/color/{slug}', 'HomeController@showPost')->name('show-color');
 /*
 TUANNA START ADD 15-03-2019
  */
-Route::get('/product', function () {
-    return view('font-end.page.product');
-})->name('product');
-Route::get('/news', function () {
-    return view('font-end.page.news');
-})->name('news');
-Route::get('/color-room', function () {
-    return view('font-end.page.brand');
-})->name('color-room');
-Route::get('/post', function () {
-    return view('font-end.page.single-post');
-})->name('post');
 Route::get('/contact', function () {
     return view('font-end.page.contact');
 })->name('contact');

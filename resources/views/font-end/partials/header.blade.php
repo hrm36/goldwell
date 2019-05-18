@@ -38,21 +38,21 @@
 					<a href="{{route('news')}}">News &amp; Events</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="brand/">Brand</a>
+					<a href="{{route('brand')}}">Brand</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="color-zoom-2019/">COLOR ZOOM 2019</a>
+					<a href="{{route('color')}}">COLOR ZOOM 2019</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="services/">Services</a>
+					<a href="#">Services</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="salon-success/">Salon Success</a>
+					<a href="#">Salon Success</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="education/">Education</a>
+					<a href="#">Education</a>
 				</li>
-				<li class="spacer navbar-inner subnavi"><a href="{{route('product')}}">Products</a>
+				<li class="spacer navbar-inner subnavi"><a href="{{route('products')}}">Products</a>
 				</li>
 			</ul>
 		</div>

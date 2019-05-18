@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Brand;
+use App\News;
+use App\ColorRoom;
+use App\Product;
 
 class HomeController extends Controller
 {
@@ -43,10 +46,68 @@ class HomeController extends Controller
         return view('welcome', ['p'=>$_info_p, 'n'=>$_info_n, 'b'=>$_info_b, 'c'=>$_info_c]);
     }
 
-    public function brand()
+    public function listPost(Request $request)
     {
-        $_info_b = config('brand.thong-tin');
-        $list_b = Brand::where('status', 1)->take(5)->get();
-        return view('font-end.page.brand', ['b'=>$_info_b, 'list'=>$list_b]);
+        $_path = $request->path();
+        switch ($_path) {
+            case 'news':
+                $_info = config('news.thong-tin');
+                $_list = News::where('status', 1)->take(10)->get();
+                $_route = 'show-new';
+                $_label = 'NEWS & EVENTS';
+                break;
+            case 'brand':
+                $_info = config('brand.thong-tin');
+                $_list = Brand::where('status', 1)->take(10)->get();
+                $_route = 'show-brand';
+                $_label = 'BRAND';
+                break;
+            case 'color-zoom':
+                $_info = config('color.thong-tin');
+                $_list = ColorRoom::where('status', 1)->take(10)->get();
+                $_route = 'show-color';
+                $_label = 'COLOR ZOOM 2019';
+                break;
+            case 'products':
+                $_info = config('product.thong-tin');
+                $_list = Product::where('status', 1)->take(10)->get();
+                $_route = 'show-product';
+                $_label = 'PRODUCTS';
+                break;            
+            default:
+                return redirect(route('hompage'));
+                break;       
+        }
+        return view('font-end.page.list', ['info'=>$_info, 'list'=>$_list, 'name_route' =>$_route, '_label' => $_label]);
+    }
+
+    public function showPost($slug)
+    {
+        $_path = $request->path();
+        switch ($_path) {
+            case 'news/':
+                $_info = config('news.thong-tin');
+                $_post = News::where('status', 1)->where('slug', $slug)->first();
+                $_link = route('news');
+                break;
+            case 'brand/':
+                $_info = config('brand.thong-tin');
+                $_post = Brand::where('status', 1)->where('slug', $slug)->first();
+                $_link = route('brand');
+                break;
+            case 'color-zoom/':
+                $_info = config('color.thong-tin');
+                $_post = ColorRoom::where('status', 1)->where('slug', $slug)->first();
+                $_link = route('color');
+                break;           
+            default:
+                return redirect(route('hompage'));
+                break;       
+        }
+        if (isset($_post)){
+            return view('font-end.page.single-post', ['_post'=>$_post, '_link' =>$_link, '_title' => $_info['title']]);          
+        }else{
+            abort(404);
+        }
     }
 }

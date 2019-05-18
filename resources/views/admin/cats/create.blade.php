@@ -58,7 +58,7 @@
 					<strong>{{session('thongbao')}}</strong>
 				</div>
 				@endif
-				<form class="form-horizontal" role="form" action="{{route('edit-dm')}}" 
+				<form class="form-horizontal" role="form" action="{{route('create-dm')}}" 
 				enctype="multipart/form-data" method="POST">
 					<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Tên chuyên mục</label>
@@ -118,62 +118,5 @@
 {{-- Page content --}}
 
 @section('script')
-<!-- slick carousel-->
-<script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('assets/js/plugins/slick/slick.min.js')}}"></script>
-<script src="{{asset('assets/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-<script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/hrm.js')}}"></script>
-<script>
-var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
-
-$(document).ready(function()
-{
-	$(".choose-style").on('click', function() {
-		  //  ret = DetailsView.GetProject($(this).attr("#data-id"), OnComplete, OnTimeOut, OnError);
-		  style = $(this).attr("data-style");
-		  $(".choose-style").each(function( index ) {
-		  	$( this ).removeClass("btn-success");
-		  	$( this ).removeClass("btn-white");
-		  	$( this ).addClass("btn-white");
-		  });
-		  $( this ).removeClass("btn-white");
-		  $( this ).addClass("btn-success");
-		  $("#dis_type").val(style);
-		});
-	CKEDITOR.replace( 'des_f' ,{
-		filebrowserBrowseUrl : fmPath,
-		filebrowserUploadUrl : fmPath,
-		filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-	});
-
-	CKEDITOR.replace( 'des_s' ,{
-		filebrowserBrowseUrl : fmPath,
-		filebrowserUploadUrl : fmPath,
-		filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-	});
-	$('#iframe-btn-0').fancybox({
-		'width': 900,
-		'height': 900,
-		'type': 'iframe',
-		'autoScale': false,
-		'autoSize': false,
-		afterClose: function () {
-			var thumb = $('#thumb_0').val();
-			if (thumb) {
-				var html = '<div class="img_preview"><img src="' + thumb + '"/>';
-				html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
-				$('#preview').html(html);
-			}
-		}
-	});
-
-	$('.product-images').slick({
-		dots: true
-	});
-
-	$(".select2_demo_2").select2();
-});
-</script>
 @stop
