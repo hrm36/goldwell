@@ -25,9 +25,9 @@ class CatRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'cat_id' => 'required',
+            'image' => 'required',
+            'des' => 'required',
             'slug' => 'required',
-            'cat_id' =>'required',
             'status'=>'required',
         ];
     }
@@ -37,7 +37,8 @@ class CatRequest extends FormRequest
         return [
             'name.required' => 'Tên không được để trống',
             'slug.required' => 'Đường dẫn không được để trống',
-            'cat_id.required' => 'Danh mục không được để trống',
+            'des.required' => 'Miêu tả không được để trống',
+            'image.required' => 'Ảnh  không được để trống',
             'type.required' => 'Không được để trống',
             'status.required' => 'Không được để trống',
         ];

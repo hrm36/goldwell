@@ -19,6 +19,7 @@ Route::get('/color-zoom', 'HomeController@listPost')->name('color');
 Route::get('/news/{slug}', 'HomeController@showPost')->name('show-new');
 Route::get('/brand/{slug}', 'HomeController@showPost')->name('show-brand');
 Route::get('/color/{slug}', 'HomeController@showPost')->name('show-color');
+Route::get('/products/{slug}', 'HomeController@showPost')->name('show-cats');
 /*
 TUANNA START ADD 15-03-2019
  */

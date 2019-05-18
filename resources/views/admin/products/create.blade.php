@@ -137,7 +137,7 @@ span.select2.select2-container.select2-container--default{
 									</div>
 								</div>
 
-								<div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
+								<div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Banner (*)</label>
 									<div class="col-sm-10">
 										<div class="input-group">

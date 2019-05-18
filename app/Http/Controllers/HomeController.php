@@ -8,6 +8,7 @@ use App\Brand;
 use App\News;
 use App\ColorRoom;
 use App\Product;
+use App\Cat;
 
 class HomeController extends Controller
 {
@@ -70,8 +71,8 @@ class HomeController extends Controller
                 break;
             case 'products':
                 $_info = config('product.thong-tin');
-                $_list = Product::where('status', 1)->take(10)->get();
-                $_route = 'show-product';
+                $_list = Cat::where('status', 1)->where('type', 0)->take(10)->get();
+                $_route = 'show-cats';
                 $_label = 'PRODUCTS';
                 break;            
             default:
