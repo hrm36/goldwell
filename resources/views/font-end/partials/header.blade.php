@@ -52,7 +52,7 @@
 				<li class="spacer navbar-inner">
 					<a href="#">Education</a>
 				</li>
-				<li class="spacer navbar-inner subnavi"><a href="{{route('products')}}">Products</a>
+				<li class="spacer navbar-inner subnavi"><a href="{{route('categories')}}">Products</a>
 				</li>
 			</ul>
 		</div>

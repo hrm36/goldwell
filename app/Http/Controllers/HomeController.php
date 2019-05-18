@@ -69,12 +69,23 @@ class HomeController extends Controller
                 $_route = 'show-color';
                 $_label = 'COLOR ZOOM 2019';
                 break;
+            case 'categories':
+                $_info = config('product.thong-tin');
+                $_list = Cat::where('status', 1)->where('type', 1)->take(10)->get();
+                $_route = 'products';
+                $_label = 'CATEGORIES';
+                break;
             case 'products':
                 $_info = config('product.thong-tin');
-                $_list = Cat::where('status', 1)->where('type', 0)->take(10)->get();
-                $_route = 'show-cats';
+
+                $_cat = Cat::where('status', 1)->where('slug', $request->slug)->first();
+                $_info['image'] = (isset($_cat)) ? $_cat->image : "";
+                $_info['title'] = (isset($_cat)) ? $_cat->name : "";
+                $_info['content'] = (isset($_cat)) ? $_cat->des_s : "";
+                $_list = (isset($_cat)) ?  Product::where('status', 1)->where('cat_id', $_cat->id)->take(10)->get() : null;
+                $_route = 'show-product';
                 $_label = 'PRODUCTS';
-                break;            
+                break;              
             default:
                 return redirect(route('hompage'));
                 break;       
@@ -109,6 +120,18 @@ class HomeController extends Controller
             return view('font-end.page.single-post', ['_post'=>$_post, '_link' =>$_link, '_title' => $_info['title']]);          
         }else{
             abort(404);
+        }
+    }
+    public function showProduct($slug)
+    {
+        $_product = Product::where('status',1)->where('slug', $slug)->first();
+        if (isset($_product)){
+            $type = $_product->dis_type;
+            if ($type == 1){
+                return view('font-end.page.single-post', ['_post'=>$_product, '_link' =>route('categories'), '_title' => 'PRODUCTS']);
+            }else {
+                return view('font-end.page.single-product', ['_post'=>$_product]);
+            }
         }
     }
 }

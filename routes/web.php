@@ -14,12 +14,13 @@
 Route::get('/', 'HomeController@homePage')->name('homepage');
 Route::get('/brand', 'HomeController@listPost')->name('brand');
 Route::get('/news', 'HomeController@listPost')->name('news');
+Route::get('/categories', 'HomeController@listPost')->name('categories');
 Route::get('/products', 'HomeController@listPost')->name('products');
 Route::get('/color-zoom', 'HomeController@listPost')->name('color');
 Route::get('/news/{slug}', 'HomeController@showPost')->name('show-new');
 Route::get('/brand/{slug}', 'HomeController@showPost')->name('show-brand');
 Route::get('/color/{slug}', 'HomeController@showPost')->name('show-color');
-Route::get('/products/{slug}', 'HomeController@showPost')->name('show-cats');
+Route::get('/{slug}/', 'HomeController@showProduct')->name('show-product');
 /*
 TUANNA START ADD 15-03-2019
  */
