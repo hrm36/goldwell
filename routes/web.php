@@ -207,4 +207,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 Auth::routes();
 
 Route::get('/home', '\App\Http\Controllers\Admin\ProductController@index')->name('home');
+
+//DUNGNM UPDATE
 Route::post('/create-slug', 'HomeController@createSlug')->name('create-slug');
