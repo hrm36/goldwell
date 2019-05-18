@@ -77,7 +77,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         //Thong tin trang danh muc san pham
         Route::get('/danh-muc/tao-moi', '\App\Http\Controllers\Admin\CatController@getcreate')->name('create-dm');
         Route::post('/danh-muc/tao-moi', '\App\Http\Controllers\Admin\CatController@postcreate')->name('create-dm');
-
+        Route::get('/danh-muc/sua/{id}', '\App\Http\Controllers\Admin\CatController@edit')->name('update-dm');
+        Route::post('/danh-muc/sua/{id}', '\App\Http\Controllers\Admin\CatController@update')->name('update-dm');
+        Route::get('/danh-muc/xoa/{id}', '\App\Http\Controllers\Admin\CatController@destroy')->name('delete-dm');
         Route::get('/danh-muc/danh-sach', '\App\Http\Controllers\Admin\CatController@index')->name('list-dm');
 
         //quy trinh san pham
@@ -160,6 +162,22 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::post('/thong-tin-trang/thay-doi', 'ColorRoomController@storeInfoTrangDanhMuc')
         ->name('page-color-ed');
     });
+
+    // //Quản lý Banner
+    // Route::prefix('banners')->group(function () {
+
+    //      //Thong tin
+    //     Route::get('/tao-moi', 'SystemController@getCreate')->name('create-banner');
+    //     Route::post('/tao-moi', 'SystemController@postCreate')->name('create-banner');
+
+    //     Route::get('/sua/{id}', 'SystemController@getEdit')->name('edit-banner');
+    //     Route::post('/sua/{id}', 'SystemController@postEdit')->name('edit-banner');
+
+    //     Route::get('/del/{id}', 'SystemController@getDelete')->name('del-banner');
+
+    //     Route::get('/danh-sach', 'SystemController@index')->name('list-banner');
+
+    // });
      /*
         TUANNA START END 16-03-2019
     */

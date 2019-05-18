@@ -41,7 +41,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-      
+
       $new_ = color::where('status', 1)->get();
       return view('admin.color.list',['flag' => 'setup_color', 'color' => $new_]);
 
@@ -54,6 +54,7 @@ class ColorController extends Controller
      */
     public function getCreate()
     {
+       
         return view('admin.color.create')->with('flag','color_n');
     }
 

@@ -15,7 +15,7 @@
 				<a href="{{route('dashboard')}}">Home</a>
 			</li>
 			<li>
-				<a href="{{route('list-color')}}">Danh sách bài viết</a>
+				<a href="{{route('list-brand')}}">Danh sách bài viết</a>
 			</li>
 			<li class="active">
 				<strong>Tất cả bài viết</strong>
@@ -24,7 +24,7 @@
 	</div>
 	<div class="col-sm-8">
 		<div class="title-action">
-			<a href="{{route('create-color')}}" class="btn btn-primary">Thêm mới</a>
+			<a href="{{route('create-brand')}}" class="btn btn-primary">Thêm mới</a>
 		</div>
 	</div>
 </div>
@@ -74,7 +74,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($color as $p)
+							@foreach($brand as $p)
 								<tr>
 									<td class="text-center">{{$p->id}}</td>
 									<td class="text-center"><img src="{{$p->image}}" width="100px"></td>				
@@ -82,9 +82,9 @@
                                    <!--  <td class="text-center">{{$p->des_s}}</td> -->
                                     <td class="text-center">{{$p->status}}</td>
 									<td class="text-center">
-										<a href="{{route('edit-color',['id'=>$p->id])}}" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
-										<button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal{{$p->id}}"><i class="fa fa-trash"></i></button>
-										<div id="myModal{{$p->id}}" class="modal fade" role="dialog">
+										<a href="{{route('edit-brand',['id'=>$p->id])}}" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
+										<button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></button>
+										<div id="myModal" class="modal fade" role="dialog">
   											<div class="modal-dialog">
 											    <div class="modal-content">
 											      <div class="modal-header">
@@ -92,7 +92,7 @@
 											        <h4 class="modal-title">Bạn có muốn xóa?</h4>
 											      </div>
 											      <div class="modal-body">
-											        <button class="btn hoi"><a href="{{route('del-color',['id'=>$p->id])}}">Có</a></button><button type="button" class="close" data-dismiss="modal">Không</button>
+											        <button class="btn hoi"><a href="{{route('del-brand',['id'=>$p->id])}}">Có</a></button><button type="button" class="close" data-dismiss="modal">Không</button>
 											      </div>
 											    </div>
 											</div>

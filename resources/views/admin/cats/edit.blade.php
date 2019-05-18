@@ -9,7 +9,7 @@
 {{-- Breadcrumb --}}
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-sm-4">
-		<h2>Tạo mới danh mục sản phẩm</h2>
+		<h2>Sửa chuyên mục mục sản phẩm</h2>
 		<ol class="breadcrumb">
 			<li>
 				<a href="{{route('dashboard')}}">Home</a>
@@ -18,7 +18,7 @@
 				<a href="{{route('list-dm')}}">Tất cả danh mục sản phẩm</a>
 			</li>
 			<li class="active">
-				<strong>Tạo mới danh mục sản phẩm</strong>
+				<strong>Sửa chuyên mục sản phẩm</strong>
 			</li>
 		</ol>
 	</div>
@@ -35,7 +35,7 @@
 	<div class="row animated fadeInRight">
 		<div class="ibox float-e-margins">
 			<div class="ibox-title">
-				<h5>Thông tin danh mục</h5>
+				<h5>Thông tin chuyên mục: {{$cat->name}}</h5>
 				<div class="ibox-tools">
 					<a class="collapse-link">
 						<i class="fa fa-chevron-up"></i>
@@ -58,12 +58,12 @@
 					<strong>{{session('thongbao')}}</strong>
 				</div>
 				@endif
-				<form class="form-horizontal" role="form" action="{{route('edit-dm')}}" 
+				<form class="form-horizontal" role="form" action="{{route('update-dm',['id'=>$cat->id])}}" 
 				enctype="multipart/form-data" method="POST">
 					<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Tên chuyên mục</label>
 						<div class="col-md-4">
-							<input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" required>                        
+							<input type="text" class="form-control" name="name" id="name" value="{{$cat->name}}" required>                              
 						</div>
 					</div>
 					<div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
@@ -77,7 +77,7 @@
 						<div class="col-md-4">
 							<select class="form-control m-b" name="cat_id" id="cat_id" required>
 								<option value="">Chọn chuyên mục</option>
-								@foreach($cat as $p)
+								@foreach($catlist as $p)
 									<option value="{{$p->id}}">{{$p->name}}</option>
 								@endforeach
 							</select>                                       
@@ -103,7 +103,7 @@
 					</div>
 					<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<button class="btn btn-primary" type="submit">Cập nhật</button>
+						<button class="btn btn-primary" type="submit">Tạo mới</button>
 					</div>
 				</div>	
 				@csrf

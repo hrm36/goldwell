@@ -83,8 +83,8 @@
                                     <td class="text-center">{{$p->status}}</td>
 									<td class="text-center">
 										<a href="{{route('edit-brand',['id'=>$p->id])}}" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
-										<button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></button>
-										<div id="myModal" class="modal fade" role="dialog">
+										<button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal{{$p->id}}"><i class="fa fa-trash"></i></button>
+										<div id="myModal{{$p->id}}" class="modal fade" role="dialog">
   											<div class="modal-dialog">
 											    <div class="modal-content">
 											      <div class="modal-header">

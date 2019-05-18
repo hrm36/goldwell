@@ -8365,7 +8365,7 @@ body.md-skin {
     margin: 0;
   }
 }
-#myModal .modal-body button {
+.modal.fade .modal-body button {
   display: inline-block;
   float: none;
   margin: 0 20px;
@@ -8375,7 +8375,7 @@ body.md-skin {
   color: #fff;
   padding: 5px 0;
 }
-#myModal .modal-body {
+.modal.fade .modal-body {
   text-align: center;
 }
 .modal-body button a {
@@ -8384,7 +8384,7 @@ body.md-skin {
   overflow: hidden;
   padding: 7px 34px;
 }
-#myModal .modal-body button.close {
+.modal.fade .modal-body button.close {
   display: inline-block;
   float: none;
   margin: 0 20px;

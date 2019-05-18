@@ -43,6 +43,16 @@
 				</div>
 			</div>
 			<div class="ibox-content">
+				@if(session('thongbao'))
+				<div class="alert alert-success">
+					<strong>{{session('thongbao')}}</strong>
+				</div>
+				@endif
+				@if(session('err'))
+				<div class="alert alert-danger">
+					<strong>{{session('err')}}</strong>
+				</div>
+				@endif
 				{{-- Data table --}}
 				<div class="table-responsive">
 					<table class="table table-striped">
@@ -61,8 +71,21 @@
 									<td class="text-center">{{$c->type == 0 ? "Có danh mục con" : "Không có danh mục con"}}</td>									
                                     <td class="text-center">{{$c->parent}}</td>
 									<td class="text-center">
-										<a href="#" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
-										<a href="#" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i></a>
+										<a href="{{route('update-dm',['id'=>$c->id])}}" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
+										<button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal{{$c->id}}"><i class="fa fa-trash"></i></button>
+										<div id="myModal{{$c->id}}" class="modal fade" role="dialog">
+  											<div class="modal-dialog">
+											    <div class="modal-content">
+											      <div class="modal-header">
+											        <button type="button" class="close" data-dismiss="modal">&times;</button>
+											        <h4 class="modal-title">Bạn có muốn xóa?</h4>
+											      </div>
+											      <div class="modal-body">
+											        <button class="btn hoi"><a href="{{route('delete-dm',['id'=>$c->id])}}">Có</a></button><button type="button" class="close" data-dismiss="modal">Không</button>
+											      </div>
+											    </div>
+											</div>
+										</div>
 									</td>
 								</tr>
 							@endforeach

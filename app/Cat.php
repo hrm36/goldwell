@@ -17,6 +17,12 @@ class Cat extends Model
     }
     public function getParentAttribute()
     {    
-        return ($this->attributes['cat_id'] != null) ? Cat::find($this->attributes['cat_id'])->name : "";
+        if (isset($this->attributes['cat_id'])) {
+            $_cat = Cat::find($this->attributes['cat_id']);
+            if (isset($_cat)) {
+               return $_cat->name;
+            }
+        }
+        return "";
     }
 }
