@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('homepage');
+Route::get('/', 'HomeController@homePage')->name('homepage');
+Route::get('/brand', 'HomeController@brand')->name('brand');
 /*
 TUANNA START ADD 15-03-2019
  */
@@ -23,9 +22,6 @@ Route::get('/product', function () {
 Route::get('/news', function () {
     return view('font-end.page.news');
 })->name('news');
-Route::get('/brand', function () {
-    return view('font-end.page.brand');
-})->name('brand');
 Route::get('/color-room', function () {
     return view('font-end.page.brand');
 })->name('color-room');

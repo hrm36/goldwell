@@ -9,7 +9,8 @@
 			</div>
 		</div>
 		<div class="header-page col-md-12">
-			<h1>NEWS + EVENTS</h1>
+			<h1>IT’S WAY BEYOND PRODUCTS</h1>
+			<p class="bodytext">We think stylist.&nbsp;<br>So we know that only a stylist-exclusive brand that meets all your professional needs can help you reach your goals.<br>A full portfolio for stunning results. Innovative tools for superior agility. Technical advances that streamline your work.<br>Service concepts that make your clients happy.</p>
 		</div>
 		<div class="list-post">	
 			@include("font-end.partials.item-news")
