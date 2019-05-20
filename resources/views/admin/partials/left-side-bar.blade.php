@@ -42,24 +42,20 @@
                     </li>
                     <li class={{$flag == "p_n" ? "active" : ""}}>
                         <a href="{{route('create-sp')}}">Thêm mới</a>
-                    </li>
-                    <hr/>                 
-                    <li class={{$flag == "quy_t_l" || $flag == "quy_t_n" ? "active" : ""}}>
-                        <a href="#">Quy trình<span class="fa arrow"></span></a>
+                    </li>                
+                    <li class={{$flag == "list_ext" || $flag == "create_ext" ? "active" : ""}}>
+                        <a href="#">QUY TRÌNH & CÔNG NGHỆ</a>
                         <ul class="nav nav-third-level">
-                            <li class={{$flag == "quy_t_l" ? "active" : ""}}>
-                                <a href="">Danh sách</a>
+                            <li class={{$flag == "list_ext" ? "active" : ""}}>
+                                <a href="{{route('extra.index')}}">Danh sách</a>
                             </li>
-                            <li class={{$flag == "quy_t_n" ? "active" : ""}}>
-                                <a href="{{route('create-qt')}}">Thêm mới</a>
+                            <li class={{$flag == "create_ext" ? "active" : ""}}>
+                                <a href="{{route('extra.create')}}">Thêm mới</a>
                             </li>
                         </ul>
                     </li>
-                    <li class={{$flag == "cong_nghe" ? "active" : ""}}>
-                        <a href="#">Công nghệ</a>
-                    </li>
                     <li class={{$flag == "cat_p_l" || $flag == "cat_p_n" ? "active" : ""}}>
-                        <a href="{{route('thong-tin-trang')}}">Danh mục Product<span class="fa arrow"></span></a>
+                        <a href="{{route('thong-tin-trang')}}">DANH MỤC</span></a>
                         <ul class="nav nav-third-level">
                             <li class={{$flag == "cat_p_l" ? "active" : ""}}>
                                 <a href="{{route('list-dm')}}">Danh sách</a>
@@ -69,9 +65,8 @@
                             </li>
                         </ul>
                     </li>
-                    <hr/>
                     <li class={{$flag == "gd" ? "active" : ""}}>
-                        <a href="{{route('thong-tin-trang')}}">Trang danh mục</a>
+                        <a href="{{route('thong-tin-trang')}}">GIAO DIỆN TRANG TỔNG</a>
                     </li>
                     
                 </ul>                   
@@ -83,14 +78,14 @@
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level collapse">
-                    <li class={{$flag == "setup_news" ? "active" : ""}}>
-                        <a href="{{route('page-news')}}">Giao diện trang</a>
-                    </li>
                     <li class={{$flag == "news_l" ? "active" : ""}}>
                         <a href="{{route('list-news')}}">Danh sách</a>
                     </li>
                     <li class={{$flag == "news_n" ? "active" : ""}}>
                         <a href="{{route('create-news')}}">Thêm mới</a>
+                    </li>
+                    <li class={{$flag == "setup_news" ? "active" : ""}}>
+                        <a href="{{route('page-news')}}">GIAO DIỆN TRANG TỔNG</a>
                     </li>
                 </ul>                   
             </li>
@@ -101,14 +96,14 @@
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level collapse">
-                    <li class={{$flag == "setup_brand" ? "active" : ""}}>
-                        <a href="{{route('page-brand')}}">Giao diện trang</a>
-                    </li>
                     <li class={{$flag == "brand_l" ? "active" : ""}}>
                         <a href="{{route('list-brand')}}">Danh sách</a>
                     </li>
                     <li class={{$flag == "brand_n" ? "active" : ""}}>
                         <a href="{{route('create-brand')}}">Thêm mới</a>
+                    </li>
+                    <li class={{$flag == "setup_brand" ? "active" : ""}}>
+                        <a href="{{route('page-brand')}}">GIAO DIỆN TRANG TỔNG</a>
                     </li>
                 </ul>                   
             </li>
@@ -118,15 +113,15 @@
                     <span class="nav-label">COLOR ZOOM</span>
                     <span class="fa arrow"></span>
                 </a>
-                <ul class="nav nav-second-level collapse">
-                    <li class={{$flag == "setup_color" ? "active" : ""}}>
-                        <a href="{{route('page-color')}}">Giao diện trang</a>
-                    </li>
+                <ul class="nav nav-second-level collapse">                   
                     <li class={{$flag == "color_l" ? "active" : ""}}>
                         <a href="{{route('list-color')}}">Danh sách</a>
                     </li>
                     <li class={{$flag == "color_n" ? "active" : ""}}>
                         <a href="{{route('create-color')}}">Thêm mới</a>
+                    </li>
+                    <li class={{$flag == "setup_color" ? "active" : ""}}>
+                        <a href="{{route('page-color')}}">GIAO DIỆN TRANG TỔNG</a>
                     </li>
                 </ul>                   
             </li>

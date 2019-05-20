@@ -43,7 +43,7 @@ class NewController extends Controller
     {
       
       $new_ = News::where('status', 1)->get();
-      return view('admin.news.list',['flag' => 'setup_news', 'news' => $new_]);
+      return view('admin.news.list',['flag' => 'news_l', 'news' => $new_]);
 
     }
 

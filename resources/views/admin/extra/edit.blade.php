@@ -10,7 +10,7 @@
 {{-- Breadcrumb --}}
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-sm-4">
-		<h2>Thêm mới quy trình hoặc công nghệ sản phẩm</h2>
+		<h2>Sửa quy trình hoặc công nghệ sản phẩm</h2>
 		<ol class="breadcrumb">
 			<li>
 				<a href="{{route('dashboard')}}">Home</a>
@@ -19,14 +19,13 @@
 				<a href="{{route('extra.index')}}">Danh sách quy trinh & công nghệ</a>
 			</li>
 			<li class="active">
-				<strong>Thêm mới quy trình hoặc công nghệ sản phẩm</strong>
+				<strong>Sửa quy trình hoặc công nghệ sản phẩm</strong>
 			</li>
 		</ol>
 	</div>
 	<div class="col-sm-8">
 		<div class="title-action">
-			<a href="#" class="btn btn-primary">Trang danh sách quy trình</a>
-			<a href="#" class="btn btn-primary">Trang sản phẩm</a>
+			<a href="{{route('extra.create')}}" class="btn btn-primary">Thêm mới</a>
 		</div>
 	</div>
 </div>
@@ -63,15 +62,16 @@
 					<strong>{{session('success')}}</strong>
 				</div>
 				@endif
-				<form class="form-horizontal" role="form" action="{{route('extra.store')}}" 
-				enctype="multipart/form-data" method="POST">
-				@csrf
+				<form id="form" class="form-horizontal" role="form" method="post" action="{{route('extra.update',['id'=>$ext->id])}}">
+				@method('PATCH')
+        		@csrf
+				<input type="hidden" name="ext_id" id="ext_id" value="{{$ext->id}}">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Loại thông tin </label>
 					<div class="col-md-4">
 						<select class="form-control m-b" name="type" id="type">
-							<option value = "0">Quy trình</option>
-							<option value = "1">Công nghệ</option>								
+							<option value = "0" {{$ext->type == 0 ? 'selected' : ''}}>Quy trình</option>
+							<option value = "1" {{$ext->type == 1 ? 'selected' : ''}}>Công nghệ</option>								
 						</select>                                       
 					</div>
 				</div>
@@ -79,9 +79,9 @@
 					<label class="col-sm-2 control-label">Danh mục </label>
 					<div class="col-md-4">
 						<select class="form-control m-b" name="cat_id" id="cat_id" onchange="catChange(this)">
-							<option value="all" selected>Tất cả</option>
+							<option value="all">Tất cả</option>
 							@foreach ($cats as $cat): ?>
-							<option value="{{$cat->id}}">{{$cat->name}}</option>
+							<option value="{{$cat->id}}" {{($ext->product != null ) ? ($ext->product->cat->id == $cat->id ? 'selected' : '') : ''}}>{{$cat->name}}</option>
 							@endforeach
 						</select>                                       
 					</div>
@@ -89,7 +89,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Sản phẩm (*)</label>
 					<div class="col-md-4 product-list">
-						@include('admin.partials.product-select')                                 
+						@include('admin.partials.product-select-2')                                 
 					</div>
 				</div>
 				<div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
@@ -101,41 +101,42 @@
 								class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
 								class="fa fa-picture-o"></i>Chọn ảnh</a>
 							</span>
-							<input id="thumb_0" class="form-control" type="text" name="image" required>
+							<input id="thumb_0" class="form-control" type="text" name="image" value="{{$ext->image}}" required>
 						</div>
-						<div id="preview">
-
+						<div id="preview" style="display: block;margin-bottom: 20px">
+							<div class="img_preview"><img src="{{$ext->image}}"/>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
-					<label class="col-sm-2 control-label">Nội dung (*) </label>
-					<div class="col-sm-10">
-						<textarea name="content" id="content" class="form-control my-editor" rows="20" required>
-						</textarea>
+					<div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
+						<label class="col-sm-2 control-label">Nội dung (*) </label>
+						<div class="col-sm-10">
+							<textarea name="content" id="content" class="form-control my-editor" rows="20" required>
+								{!! $ext->content !!}
+							</textarea>
+						</div>
 					</div>
-				</div>
-				<div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
-					<label class="col-sm-2 control-label">Trạng thái</label>
-					<div class="col-md-4">
-						<select class="form-control m-b" name="status" id="status">
-							<option value = "1">Sử dụng</option>
-							<option value = "0">Không sử dụng</option>								
-						</select>                                       
+					<div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
+						<label class="col-sm-2 control-label">Trạng thái</label>
+						<div class="col-md-4">
+							<select class="form-control m-b" name="status" id="status">
+								<option value = "1" {{$ext->status == 1 ? 'selected' : ''}}>Sử dụng</option>
+								<option value = "0" {{$ext->status == 0 ? 'selected' : ''}}>Không sử dụng</option>								
+							</select>                                       
+						</div>
 					</div>
-				</div>
-				<link href="{{asset('assets/css/plugins/jasny/jasny-bootstrap.min.css')}}" rel="stylesheet">
-				<div class="form-group">
-					<div class="col-sm-4 col-sm-offset-2">
-						<button class="btn btn-white" >Làm mới</button>
-						<button class="btn btn-primary" type="submit">Tạo mới</button>
-					</div>
-				</div>	
-			</form>
+					<link href="{{asset('assets/css/plugins/jasny/jasny-bootstrap.min.css')}}" rel="stylesheet">
+					<div class="form-group">
+						<div class="col-sm-4 col-sm-offset-2">
+							<button class="btn btn-white" >Làm mới</button>
+							<button class="btn btn-primary" type="submit">Tạo mới</button>
+						</div>
+					</div>	
+				</form>
 
+			</div>
 		</div>
-	</div>
-</div>		
+	</div>		
 </div>
 {{-- END Main Content --}}
 
@@ -180,12 +181,13 @@
 	{
 		$.ajax(
 		{
-			url: '?&cat_id=' + obj.value, 
+			url: '?&cat_id=' + obj.value + '&id=' + $("#ext_id").val(), 
 			type: "get",
 			datatype: "html"
 		}).done(function(data){
 			$(".product-list").empty().html(data);
 		}).fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log(jqXHR);
 			alert('No response from server');
 		});
 	}

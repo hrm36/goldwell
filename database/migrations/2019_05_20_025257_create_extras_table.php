@@ -15,6 +15,11 @@ class CreateExtrasTable extends Migration
     {
         Schema::create('extras', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('type');
+            $table->integer('product_id');
+            $table->text('image');
+            $table->text('content');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
