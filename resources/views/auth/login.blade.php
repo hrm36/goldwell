@@ -24,7 +24,7 @@
                <img alt="image" class="img-circle" src="{{asset('source/ajinomoto/logo/logo-ajinomoto.png')}}" />
 
             </div>
-            <h3>Ajinomoto cooking studio CMS</h3>
+            <h3>Goldwell CMS</h3>
            
             <p>Đăng nhập để sử dụng hệ thống</p>
             <form method="POST" class="m-t" action="{{ route('login') }}">

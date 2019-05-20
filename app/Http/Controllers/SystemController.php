@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SystemRequest as SystemRequest;
 
 class SystemController extends Controller
 {
@@ -15,6 +16,8 @@ class SystemController extends Controller
     public function index()
     {
         //
+        $_info = config('sys_page.info');
+        return view('admin.system.view', ['info' => $_info, 'flag' => 'info']);
     }
 
     /**
@@ -44,7 +47,7 @@ class SystemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
     }
@@ -58,6 +61,8 @@ class SystemController extends Controller
     public function edit($id)
     {
         //
+        $_info = config('sys_page.info');
+        return view('admin.system.edit', ['info' => $_info, 'flag' => 'info_page']);
     }
 
     /**
@@ -67,9 +72,20 @@ class SystemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SystemRequest $request, $id)
     {
         //
+        config(['system.info.logo' => $request->logo]);
+        config(['system.info.facebook' => $request->facebook]);
+        config(['system.info.phone' => $request->phone]);
+        config(['system.info.open_time' => $request->open_time]);
+        config(['system.info.address' => $request->address]);
+        $fp = fopen(base_path() .'/config/system.php' , 'w');
+        fwrite($fp, '<?php return ' . var_export(config('system'), true) . ';');
+        fclose($fp);
+        $info_ = config('system.info');
+        return view('admin.system.view',['flag' => 'info_page', 'info' => $info_]);
+
     }
 
     /**
