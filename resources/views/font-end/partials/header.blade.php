@@ -1,22 +1,19 @@
 <header id="header" class="site-header">
 	<div class="container">
 		<div class="col-md-4">
-			<!-- <div class="list-social">
+			<div class="list-social">
 				<ul>
 					<li>
 						<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i><span>YouTube</span></a>
-					</li>
-					<li>
 						<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 					</li>
+					<li>
+						<a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+					</li>
 				</ul>
-			</div> -->
+			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="logo">

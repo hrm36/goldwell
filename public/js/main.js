@@ -6,11 +6,9 @@ jQuery(document).ready(function($) {
     auto:true,
     pause: 3800,
     speed: 1500,
-    pager: false,
+    pager: true,
     loop:true,
-    enableTouch:false,
     controls: false,
-    enableDrag: false,
 });
   jQuery('.product-slide').lightSlider({
     item:1,

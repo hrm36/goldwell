@@ -202,21 +202,24 @@ body {
   padding: 0 5px;
 }
 .lSSlideOuter .lSPager.lSpg > li a {
-  background-color: #222222;
-  border-radius: 30px;
+  background-color: #6a6a6d;
+  border-radius: 0;
   display: inline-block;
-  height: 8px;
+  height: 10px;
   overflow: hidden;
   text-indent: -999em;
-  width: 8px;
+  width: 10px;
   position: relative;
   z-index: 99;
   -webkit-transition: all 0.5s linear 0s;
   transition: all 0.5s linear 0s;
 }
+.home-slides.clear.clearfix {
+  position: relative;
+}
 .lSSlideOuter .lSPager.lSpg > li:hover a,
 .lSSlideOuter .lSPager.lSpg > li.active a {
-  background-color: #428bca;
+  background-color: #fff;
 }
 .lSSlideOuter .media {
   opacity: 0.8;
@@ -1216,7 +1219,7 @@ header#header {
 }
 .list-social ul li {
   float: left;
-  margin-right: 10px;
+  margin-right: 15px;
   font-weight: bold;
   font-size: 16px;
 }
@@ -1286,8 +1289,8 @@ li.spacer.navbar-inner {
 }
 li.spacer.navbar-inner a {
   text-transform: uppercase;
-  padding: 5px 7px 5px 7px;
-  color: #666;
+  padding: 5px 18px 5px 18px;
+  color: #393939;
 }
 #header .search {
   font-weight: bold;
@@ -1297,15 +1300,23 @@ li.spacer.navbar-inner a {
 .header-page p.bodytext {
   max-width: 70%;
   text-align: center;
-  display: block;
-  margin: 35px auto;
-  margin-top: 0;
+  display: inline-block;
+}
+ul.lSPager.lSpg {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 7%;
+  z-index: 9999;
 }
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
 .tile.white {
   color: #FFFFFF;
+}
+.text.phai {
+  text-align: center;
 }
 .tile {
   overflow: hidden;
@@ -1411,8 +1422,12 @@ span.spacer3 {
 }
 .textpic.default {
   background: #fff;
-  display: table;
+  display: block;
   margin-top: 30px;
+  float: left;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
 }
 .product-slide li:nth-child(even) .textpic.default .col-md-6.cp {
   float: left;
@@ -1432,6 +1447,8 @@ span.spacer3 {
 .textpic .gfx-wrap img {
   max-width: 100%;
   margin: 0 auto;
+  height: 100%;
+  max-height: 100%;
 }
 .textpic .col-md-6:last-child, .textpic .col-md-8:last-child, .textpic .col-md-4:last-child {
   padding: 45px 3% 3% 3%;
@@ -1459,6 +1476,7 @@ p.bodytext {
 }
 .col-md-6.ct, .col-md-6.cp {
   padding: 0;
+  min-height: 380px
 }
 a.button-black-whitehover:hover {
   background: #000;
@@ -1533,6 +1551,26 @@ a.button-black-whitehover:hover {
   display: block;
   max-width: 60%;
   margin: 0 auto;
+}
+.tile.imagetile.col-md-6.white.moreinfo {
+  max-height: 375px;
+  overflow: hidden;
+}
+.header-page.col-md-12 {
+  padding-bottom: 30px;
+  text-align: center;
+}
+.image-intro {
+  max-height: 490px;
+  display: block;
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.image-intro img {
+  max-width: 100%;
+  width: 100%;
 }
 /*--------------------------------------------------------------
 # Footer
