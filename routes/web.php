@@ -4,11 +4,6 @@
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great
-|
 */
 
 Route::get('/', 'HomeController@homePage')->name('homepage');
@@ -20,47 +15,22 @@ Route::get('/color-zoom', 'HomeController@listPost')->name('color');
 Route::get('/news/{slug}', 'HomeController@showPost')->name('show-new');
 Route::get('/brand/{slug}', 'HomeController@showPost')->name('show-brand');
 Route::get('/color/{slug}', 'HomeController@showPost')->name('show-color');
-Route::get('/{slug}/', 'HomeController@showProduct')->name('show-product');
-/*
-TUANNA START ADD 15-03-2019
- */
-Route::get('/contact', function () {
-    return view('font-end.page.contact');
-})->name('contact');
-Route::get('/single', function () {
-    return view('font-end.page.single-product');
-})->name('single-product');
-//Trang liên hệ [tuan]
+Route::get('/{slug}.html', 'HomeController@showProduct')->name('show-product');
 Route::get('/contact', 'ContactController@getCreate')->name('contact');
 Route::post('/contact', 'ContactController@postCreate')->name('contact');
 
 /*
-TUANNA START END 15-03-2019
- */
+|--------------------------------------------------------------------------
+| Back-end Routes
+|--------------------------------------------------------------------------
+*/
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-    /*
-        TUANNA START ADD 15-03-2019
-    */
-    //Quản lý thông tin liên hệ
-    Route::prefix('contact')->group(function () {
-        Route::get('/list', 'ContactController@index')->name('list-contact');
-        Route::get('/edit/{id}', 'ContactController@getEdit')->name('edit-contact');
-        Route::post('/edit/{id}', 'ContactController@postEdit')->name('edit-contact');
-    });
-    /*
-        TUANNA START END 15-03-2019
-    */
+    // BANG TIN
     Route::get('/', function () {
         return view('admin.layouts.default',['flag' => 'dashboard']);
     })->name('dashboard');
-    Route::get('/gallery', function () {
-        return view('admin.gallery',['flag' => 'gallery']);
-    })->name('gallery');
-
-    Route::prefix('user')->group(function () {
-    	Route::get('/list', '\App\Http\Controllers\Admin\UserController@index')->name('list-user');
-    });
-    //Quản lý sản phẩm
+    
+    //SAN PHAM
     Route::prefix('san-pham')->group(function () {
         //quản lí sản phẩm
         Route::get('/danh-sach', '\App\Http\Controllers\Admin\ProductController@index')->name('list-sp');
@@ -80,9 +50,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
         //quy trinh san pham
         Route::get('/quy-trinh/tao-moi', '\App\Http\Controllers\Admin\QuytrinhController@create')->name('create-qt');
-
-
-
         Route::get('/thong-tin-trang', '\App\Http\Controllers\Admin\ProductController@getInfoTrangDanhMuc')->name('thong-tin-trang');
         Route::get('/thong-tin-trang/thay-doi', '\App\Http\Controllers\Admin\ProductController@updateInfoTrangDanhMuc')
         ->name('thong-tin-trang-td');
@@ -90,10 +57,16 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         ->name('thong-tin-trang-td');
     });
 
-    /*
-        TUANNA START ADD 16-03-2019
-    */
-    //Quản lý bài viết tin tức
+
+    //QUY TRINH
+    Route::prefix('quy-trinh')->group(function () {
+        //quản lí trang liên kết
+        Route::get('/tao-moi', function () {
+                return view('admin.quy-trinh.create',['flag' => 'quy_t_n']);
+        })->name('create-qt');
+    });
+
+    //TIN TUC
     Route::prefix('news')->group(function () {
         //quản lí bài viết
         Route::get('/thong-tin-trang', 'NewController@getInfoTrangDanhMuc')->name('page-news');
@@ -115,7 +88,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         ->name('page-news-ed');
     });
 
-    //Quản lý Brand
+    //BRAND
     Route::prefix('brand')->group(function () {
         //quản lí bài viết
         Route::get('/thong-tin-trang', 'BrandController@getInfoTrangDanhMuc')->name('page-brand');
@@ -137,7 +110,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         ->name('page-brand-ed');
     });
 
-    //Quản lý Color Room
+    //COLOR
     Route::prefix('color')->group(function () {
         //quản lí bài viết
         Route::get('/thong-tin-trang', 'ColorRoomController@getInfoTrangDanhMuc')->name('page-color');
@@ -159,50 +132,25 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         ->name('page-color-ed');
     });
 
-    // //Quản lý Banner
-    // Route::prefix('banners')->group(function () {
-
-    //      //Thong tin
-    //     Route::get('/tao-moi', 'SystemController@getCreate')->name('create-banner');
-    //     Route::post('/tao-moi', 'SystemController@postCreate')->name('create-banner');
-
-    //     Route::get('/sua/{id}', 'SystemController@getEdit')->name('edit-banner');
-    //     Route::post('/sua/{id}', 'SystemController@postEdit')->name('edit-banner');
-
-    //     Route::get('/del/{id}', 'SystemController@getDelete')->name('del-banner');
-
-    //     Route::get('/danh-sach', 'SystemController@index')->name('list-banner');
-
-    // });
-     /*
-        TUANNA START END 16-03-2019
-    */
-    //Quản lý quy trình
-    Route::prefix('quy-trinh')->group(function () {
-        //quản lí trang liên kết
-        Route::get('/tao-moi', function () {
-                return view('admin.quy-trinh.create',['flag' => 'quy_t_n']);
-        })->name('create-qt');
+    //LIEN HE
+    Route::prefix('contact')->group(function () {
+        Route::get('/list', 'ContactController@index')->name('list-contact');
+        Route::get('/edit/{id}', 'ContactController@getEdit')->name('edit-contact');
+        Route::post('/edit/{id}', 'ContactController@postEdit')->name('edit-contact');
     });
+   
+    //THU VIEN
+    Route::get('/gallery', function () {
+        return view('admin.gallery',['flag' => 'gallery']);
+    })->name('gallery');
 
-
-    //Quản lý thông tin hệ thống
-    Route::prefix('system')->group(function () {
-        //quản lí trang liên kết
-        Route::prefix('lien-ket')->group(function () {
-            Route::get('/danh-sach', function () {
-                return view('admin.system.lien-ket.link-lien-ket',['flag' => 'lien_ket']);
-            })->name('danh-sach-lien-ket');
-            Route::get('/them-moi', function () {
-                return view('admin.system.lien-ket.them-moi',['flag' => 'lien_ket']);
-            })->name('them-moi-lien-ket');
-        });
-    });
+    Route::resource('system', 'SystemController');
 });
 
+//AUTH
 Auth::routes();
 
 Route::get('/home', '\App\Http\Controllers\Admin\ProductController@index')->name('home');
 
-//DUNGNM UPDATE
+//AJAX
 Route::post('/create-slug', 'HomeController@createSlug')->name('create-slug');

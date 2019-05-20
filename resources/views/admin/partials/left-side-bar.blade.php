@@ -194,18 +194,13 @@
                 <a href="{{route('list-contact')}}"><i class="fa fa-tty"></i> <span class="nav-label">CONTACT</span></a>
             </li>
 
-            <li class={{$flag == "lien_ket" || $flag == "banner" || $flag == "logo" 
-                        || $flag == "page" || $flag == "info" ? "active" : ""}}>
+            <li class={{$flag == "info_page"  ? "active" : ""}}>
                 <a href="#"><i class="fa fa-gears"></i> 
                     <span class="nav-label">GIAO DIỆN</span> 
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li class={{$flag == "lien_ket" ? "active" : ""}}><a href="#">Trang liên kết</a></li>
-                    <li class={{$flag == "banner" ? "active" : ""}}><a href="#">Banner</a></li>
-                    <li class={{$flag == "logo" ? "active" : ""}}><a href="#">Logo</a></li>
-                    <li class={{$flag == "page" ? "active" : ""}}><a href="#">Trang</a></li>
-                    <li class={{$flag == "page" ? "active" : ""}}><a href="#">Thông tin website</a></li>                          
+                    <li class={{$flag == "info_page" ? "active" : ""}}><a href="{{route('system.index')}}">Thông tin website</a></li>          
                 </ul>
             </li>
             <li class={{$flag == "gallery" ? "active" : ""}}>
