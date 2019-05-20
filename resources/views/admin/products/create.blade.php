@@ -70,17 +70,17 @@ span.select2.select2-container.select2-container--default{
 								<div class="ibox product-detail">
 									<div class="ibox-content">
 										<div class="row">
-											<div class="col-md-5">
-												<div class="product-images">
-													<div>
-														<img src="http://localhost:80/goldwell/public/source/top-nhung-hinh-anh-gai-dep-gai-xinh-nhat-hien-nay-15.png" style="max-width: 100%; max-height: 100%;">
-													</div>
-													<div>
-														<img src="http://localhost:80/goldwell/public/source/banner-1.jpg" style="max-width: 100%; max-height: 100%;">
-													</div>
+											<div class="col-md-4">
+												<div>
+													<img src="http://localhost/goldwell/public/source/System/style-product/style-1.png" style="max-width: 100%; max-height: 100%;">
 												</div>
 											</div>
-											<div class="col-md-7">
+											<div class="col-md-4">
+												<div>
+													<img src="http://localhost/goldwell/public/source/System/style-product/style-2.png" style="max-width: 100%; max-height: 100%;">
+												</div>
+											</div>
+											<div class="col-md-3">
 												<h2 class="font-bold m-b-xs">
 													Chọn giao diện hiển thị cho sản phẩm mới
 												</h2>
@@ -142,7 +142,7 @@ span.select2.select2-container.select2-container--default{
 									<div class="col-sm-10">
 										<div class="input-group">
 											<span class="input-group-btn">
-												<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
+												<a href="/goldwell/filemanager/dialog.php?type=0&field_id=thumb_0"
 												class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
 												class="fa fa-picture-o"></i>Chọn ảnh</a>
 											</span>
