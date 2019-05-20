@@ -30,8 +30,8 @@
                 <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Bảng tin</span></span></a>
             </li>
 
-            <li class={{$flag == "p_l" || $flag == "p_n" || $flag == "cat_p_l" || $flag == "quy_t_l" || $flag == "quy_t_n"   
-                        || $flag == "cong_nghe" || $flag == "cat_p_n" || $flag == "gd" ? "active" : ""}}>
+            <li class={{$flag == "p_l" || $flag == "p_n" || $flag == "cat_p_l" || $flag == "list_ext" || $flag == "create_ext" || $flag == "create_ext"   
+                        || $flag == "cat_p_n" || $flag == "gd" ? "active" : ""}}>
                 <a href="#"><i class="fa fa-cubes"></i> 
                     <span class="nav-label">PRODUCTS</span>
                     <span class="fa arrow"></span>
@@ -141,49 +141,28 @@
                 </ul>                   
             </li>
 
-            <li class={{$flag == "al_l" || $flag == "al_n" || $flag == "cat_al_n" || $flag == "cat_al_l" ? "active" : ""}}>
+            <li class={{$flag == "coll_l" || $flag == "coll_n" || $flag == "media_l" || $flag == "media_n"  ? "active" : ""}}>
                 <a href="#"><i class="fa fa-picture-o"></i> 
-                    <span class="nav-label">ALBUM</span> 
+                    <span class="nav-label">BỘ SƯU TẬP</span> 
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li class={{$flag == "al_l" ? "active" : ""}}><a href="#">Tất cả Album</a></li>
-                    <li class={{$flag == "al_n" ? "active" : ""}}><a href="#">Thêm album mới</a></li>
-                    <li class={{$flag == "cat_al_l" || $flag == "cat_al_n" ? "active" : ""}}>
-                        <a href="#">Chuyên mục album <span class="fa arrow"></span></a>
+                    <li class={{$flag == "coll_l" ? "active" : ""}}><a href="{{route('coll.index')}}">Danh sách</a></li>
+                    <li class={{$flag == "coll_n" ? "active" : ""}}><a href="{{route('coll.create')}}">Thêm mới</a></li>
+                    <li class={{$flag == "media_l" || $flag == "media_n" ? "active" : ""}}>
+                        <a href="#">ẢNH & VIDEOS</span></a>
                         <ul class="nav nav-third-level">
-                            <li class={{$flag == "cat_al_l" ? "active" : ""}}>
-                                <a href="#">Danh sách</a>
+                            <li class={{$flag == "media_l" ? "active" : ""}}>
+                                <a href="{{route('media.index')}}">Danh sách</a>
                             </li>
-                            <li class={{$flag == "cat_al_n" ? "active" : ""}}>
-                                <a href="#">Thêm mới</a>
+                            <li class={{$flag == "media_n" ? "active" : ""}}>
+                                <a href="{{route('media.create')}}">Thêm mới</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
 
-            <li class={{$flag == "vi_l" || $flag == "vi_n" || $flag == "cat_vi_n" || $flag == "cat_vi_l" ? "active" : ""}}>
-                <a href="#"><i class="fa fa-youtube-play"></i> 
-                    <span class="nav-label">VIDEOS</span> 
-                    <span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li class={{$flag == "vi_l" ? "active" : ""}}><a href="#">Tất cả videos</a></li>
-                    <li class={{$flag == "vi_n" ? "active" : ""}}><a href="#">Thêm video mới</a></li>
-                    <li class={{$flag == "cat_vi_l" || $flag == "cat_vi_n" ? "active" : ""}}>
-                        <a href="#">Chuyên mục video <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li class={{$flag == "cat_vi_l" ? "active" : ""}}>
-                                <a href="#">Danh sách</a>
-                            </li>
-                            <li class={{$flag == "cat_vi_n" ? "active" : ""}}>
-                                <a href="#">Thêm mới</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
 
             <li class={{$flag == "lienhe" ? "active" : ""}}>
                 <a href="{{route('list-contact')}}"><i class="fa fa-tty"></i> <span class="nav-label">CONTACT</span></a>

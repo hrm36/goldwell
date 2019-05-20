@@ -34,7 +34,7 @@ span.select2.select2-container.select2-container--default{
 	</div>
 	<div class="col-sm-8">
 		<div class="title-action">
-			<a href="#" class="btn btn-primary">Trở về danh sách sản phẩm</a>
+			<a href="{{route('list-sp')}}" class="btn btn-primary">Danh sách sản phẩm</a>
 		</div>
 	</div>
 </div>
@@ -202,7 +202,7 @@ span.select2.select2-container.select2-container--default{
 				</div>	
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<button class="btn btn-white" >Làm mới</button>
+						<button class="btn btn-white" type ="reset">Làm mới</button>
 						<button class="btn btn-primary" type="submit">Tạo mới</button>
 					</div>
 				</div>					  				

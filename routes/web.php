@@ -59,6 +59,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //QUY TRINH_CONG NGHE
     Route::resource('extra', 'ExtraController');
 
+    //VIDEO
+    Route::resource('media', 'MediaController');
+
+    //BO SUU TAP
+    Route::resource('coll', 'CollController');
+    Route::resource('media', 'MediaController');
+
     //TIN TUC
     Route::prefix('news')->group(function () {
         //quản lí bài viết

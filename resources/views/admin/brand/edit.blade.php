@@ -145,7 +145,7 @@
 				</div>	
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<button class="btn btn-white">Làm mới</button>
+						type ="reset"
 						<button class="btn btn-primary" type="submit">Cập nhật</button>
 					</div>
 				</div>					  				

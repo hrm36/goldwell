@@ -100,7 +100,7 @@
 				<link href="{{asset('assets/css/plugins/jasny/jasny-bootstrap.min.css')}}" rel="stylesheet">
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<button class="btn btn-white" >Làm mới</button>
+						<button class="btn btn-white" type ="reset">Làm mới</button>
 						<button class="btn btn-primary" type="submit">Tạo mới</button>
 					</div>
 				</div>	

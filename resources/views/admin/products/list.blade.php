@@ -9,7 +9,7 @@
 {{-- Breadcrumb --}}
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-sm-4">
-		<h2>Danh sách sản phẩm</h2>
+		<h2>Danh sách PRODUCTS</h2>
 		<ol class="breadcrumb">
 			<li>
 				<a href="{{route('dashboard')}}">Home</a>

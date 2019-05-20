@@ -1,7 +1,7 @@
 @extends('admin.layouts.default')
 
 @section('css')
-
+<link href="{{asset('assets/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
 @stop
 
 {{-- Page content --}}
@@ -9,7 +9,7 @@
 {{-- Breadcrumb --}}
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-sm-4">
-		<h2>Danh sách tin tức</h2>
+		<h2>Danh sách COLOR - ZOOM 2019</h2>
 		<ol class="breadcrumb">
 			<li>
 				<a href="{{route('dashboard')}}">Home</a>
@@ -63,7 +63,7 @@
                             </div>
                         @endif
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table class="table table-striped table-bordered table-hover dataTables-example">
 						<thead style="color: #000;font-weight: bold;">
 							<tr>
 								<td class="text-center">ID</td>
@@ -114,5 +114,29 @@
 {{-- Page content --}}
 
 @section('script')
-
+<script src="{{asset('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
+<script>
+	$(document).ready(function(){
+		$('.dataTables-example').DataTable({
+			pageLength: 10,
+			responsive: true,
+			dom: '<"html5buttons"B>lTfgitp',
+			buttons: [
+			{ extend: 'copy'},
+			{extend: 'csv'},
+			{extend: 'excel', title: 'ExampleFile'},
+			{extend: 'pdf', title: 'ExampleFile'},
+			{extend: 'print',
+			customize: function (win){
+				$(win.document.body).addClass('white-bg');
+				$(win.document.body).css('font-size', '10px');
+				$(win.document.body).find('table')
+				.addClass('compact')
+				.css('font-size', 'inherit');
+			}
+		}
+		]
+	});
+	});
+</script>
 @stop

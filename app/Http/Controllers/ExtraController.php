@@ -46,7 +46,7 @@ class ExtraController extends Controller
            return view('admin.partials.product-select', ['products' => $products] );
         }
         $cats = Cat::where('status', 1)->where('type', 1)->get();       
-        return view('admin.extra.create', ['flag'=>'create-ext', 'cats' => $cats, 'products' => $products]);
+        return view('admin.extra.create', ['flag'=>'create_ext', 'cats' => $cats, 'products' => $products]);
     }
 
     /**

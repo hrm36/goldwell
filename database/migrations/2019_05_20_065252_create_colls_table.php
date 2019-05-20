@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuytrinhsTable extends Migration
+class CreateCollsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateQuytrinhsTable extends Migration
      */
     public function up()
     {
-        Schema::create('quytrinhs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id');
-            $table->string('image');
-            $table->text('content');
+        Schema::create('colls', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('time');
             $table->boolean('status');
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateQuytrinhsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quytrinhs');
+        Schema::dropIfExists('colls');
     }
 }
