@@ -93,29 +93,25 @@ class HomeController extends Controller
         return view('font-end.page.list', ['info'=>$_info, 'list'=>$_list, 'name_route' =>$_route, '_label' => $_label]);
     }
 
-    public function showPost($slug)
+    public function showPost(Request $request , $slug)
     {
         $_path = $request->path();
-        switch ($_path) {
-            case 'news/':
-                $_info = config('news.thong-tin');
-                $_post = News::where('status', 1)->where('slug', $slug)->first();
-                $_link = route('news');
-                break;
-            case 'brand/':
-                $_info = config('brand.thong-tin');
-                $_post = Brand::where('status', 1)->where('slug', $slug)->first();
-                $_link = route('brand');
-                break;
-            case 'color-zoom/':
-                $_info = config('color.thong-tin');
-                $_post = ColorRoom::where('status', 1)->where('slug', $slug)->first();
-                $_link = route('color');
-                break;           
-            default:
-                return redirect(route('hompage'));
-                break;       
+        if ($request->is('news/*')) {
+            $_info = config('news.thong-tin');
+            $_post = News::where('status', 1)->where('slug', $slug)->first();
+            $_link = route('news');
+        }else if ($request->is('brand/*')) {
+            $_info = config('brand.thong-tin');
+            $_post = Brand::where('status', 1)->where('slug', $slug)->first();
+            $_link = route('brand');
+        }else if ($request->is('color-zoom/*')) {
+            $_info = config('color.thong-tin');
+            $_post = ColorRoom::where('status', 1)->where('slug', $slug)->first();
+            $_link = route('color');
+        }else{
+            return redirect(route('homepage'));
         }
+        
         if (isset($_post)){
             return view('font-end.page.single-post', ['_post'=>$_post, '_link' =>$_link, '_title' => $_info['title']]);          
         }else{

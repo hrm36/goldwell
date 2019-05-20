@@ -9,16 +9,16 @@
 {{-- Breadcrumb --}}
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-sm-4">
-        <h2>Thêm mới quy trình sản phẩm</h2>
+        <h2>Thêm mới quy trình hoặc công nghệ sản phẩm</h2>
         <ol class="breadcrumb">
 	        <li>
 	            <a href="{{route('dashboard')}}">Home</a>
 	        </li>
 	        <li>
-	            <a href="#">Danh sách sản phẩm</a>
+	            <a href="{{route('list-sp')}}">Danh sách sản phẩm</a>
 	        </li>
 	        <li class="active">
-	            <strong>Thêm mới quy trình sản phẩm</strong>
+	            <strong>Thêm mới quy trình hoặc công nghệ sản phẩm</strong>
 	        </li>
         </ol>
     </div>
@@ -36,7 +36,7 @@
 	<div class="row animated fadeInRight">
 		<div class="ibox float-e-margins">
 			<div class="ibox-title">
-	            <h5>Thông tin quy trình</h5>
+	            <h5>Thông tin</h5>
 	            <div class="ibox-tools">
 		            <a class="collapse-link">
 		                <i class="fa fa-chevron-up"></i>
@@ -62,6 +62,15 @@
 				 <form class="form-horizontal" role="form" action="#" 
 				 enctype="multipart/form-data" method="POST">
 				 @csrf
+				 	<div class="form-group">
+						<label class="col-sm-2 control-label">Loại thông tin </label>
+						<div class="col-md-4">
+							<select class="form-control m-b" name="type" id="type">
+								<option value = "0">Quy trình</option>
+								<option value = "1">Công nghệ</option>								
+							</select>                                       
+						</div>
+					</div>
 				 	<div class="form-group">
 						<label class="col-sm-2 control-label">Danh mục </label>
 						<div class="col-md-4">

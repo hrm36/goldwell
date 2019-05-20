@@ -57,14 +57,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         ->name('thong-tin-trang-td');
     });
 
-
-    //QUY TRINH
-    Route::prefix('quy-trinh')->group(function () {
-        //quản lí trang liên kết
-        Route::get('/tao-moi', function () {
-                return view('admin.quy-trinh.create',['flag' => 'quy_t_n']);
-        })->name('create-qt');
-    });
+    //QUY TRINH_CONG NGHE
+    Route::resource('extra', 'ExtraController');
 
     //TIN TUC
     Route::prefix('news')->group(function () {
