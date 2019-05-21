@@ -86,13 +86,19 @@
 										<input type="text" class="form-control" name="name" id="name" value="{{$news->name}}">
 									</div>
 								</div>
+								<div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
+									<label class="col-sm-2 control-label">Slug (*) </label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" name="slug" id="slug" value="{{$news->slug}}">
+									</div>
+								</div>
 								<div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Ảnh đại diện (*)</label>
 									<div class="col-sm-10">
 										<div class="input-group">
 											<span class="input-group-btn">
-												<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
-												class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
+												<a href="{{env("URL_FILEMANAGE_1", "")}}"
+												class="btn btn-primary red iframe-btn" id="iframe-edit-new"><i
 												class="fa fa-picture-o"></i>Chọn ảnh</a>
 											</span>
 											<input id="thumb_0" class="form-control" type="text" name="image" value="{{$news->image}}" required>
@@ -102,12 +108,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
-									<label class="col-sm-2 control-label">Slug (*) </label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" name="slug" id="slug" value="{{$news->slug}}">
-									</div>
-								</div>
+								
 
 								<div class="form-group {{ $errors->has('des_s') ? 'has-error' : '' }}">
 									<label class="col-sm-2 control-label">Miêu tả ngắn (*) </label>
@@ -168,7 +169,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script>
-	var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
 	$(document).ready(function()
 	{
 		$(".choose-style").on('click', function() {
@@ -185,30 +185,15 @@
 		});
 
 		CKEDITOR.replace( 'des_f' ,{
-			filebrowserBrowseUrl : fmPath,
-			filebrowserUploadUrl : fmPath,
-			filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+			filebrowserBrowseUrl : fmPath_2,
+			filebrowserUploadUrl : fmPath_2,
+			filebrowserImageBrowseUrl : fmPath_2,
 		});
 		
 		CKEDITOR.replace( 'des_s' ,{
-			filebrowserBrowseUrl : fmPath,
-			filebrowserUploadUrl : fmPath,
-			filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-		});
-		$('#iframe-btn-0').fancybox({
-			'width': 900,
-			'height': 900,
-			'type': 'iframe',
-			'autoScale': false,
-			'autoSize': false,
-			afterClose: function () {
-				var thumb = $('#thumb_0').val();
-				if (thumb) {
-					var html = '<div class="img_preview"><img src="' + thumb + '"/>';
-					html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
-					$('#preview').html(html);
-				}
-			}
+			filebrowserBrowseUrl : fmPath_2,
+			filebrowserUploadUrl : fmPath_2,
+			filebrowserImageBrowseUrl : fmPath_2,
 		});
 
 		$('.product-images').slick({
@@ -216,6 +201,7 @@
 		});
 
 		$(".select2_demo_2").select2();
+		settingIframe("#iframe-edit-new");
 	});
 </script>
 @stop

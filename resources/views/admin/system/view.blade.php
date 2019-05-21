@@ -20,14 +20,6 @@
 			</li>
 		</ol>
 	</div>
-	<div class="col-sm-8">
-		<div class="title-action">
-			<a href="#" class="btn btn-primary">Trang quy trình</a>
-			<a href="#" class="btn btn-primary">Trang công nghệ</a>
-			<a href="#" class="btn btn-primary">Trang chuyên mục</a>
-			<a href="#" class="btn btn-primary">Trang sản phẩm</a>
-		</div>
-	</div>
 </div>
 {{-- END Breadcrumb --}}
 
@@ -57,13 +49,36 @@
 						</div>
 						<div class="col-md-7">
 							<h2 class="font-bold m-b-xs">
-								Link FB
+								Iframe FB
 							</h2>
-							<small>{{$info['facebook']}}</small>
+							<div class="small text-muted">
+							{{ $info['facebook'] }}
+							</div>
+							<hr>
+							<h3 class="font-bold m-b-xs">
+								Link FB
+							</h3>
+							<div class="small text-muted">
+							{{ $info['url_facebook'] }}
+							</div>
+							<hr>
+							<h3 class="font-bold m-b-xs">
+								Link Instagram
+							</h3>
+							<div class="small text-muted">
+							{{ $info['url_ins'] }}
+							</div>
+							<hr>
+							<h3 class="font-bold m-b-xs">
+								Link Youtube
+							</h3>
+							<div class="small text-muted">
+							{{ $info['url_you'] }}
+							</div>
 							<hr>
 
 							<h2 class="font-bold m-b-xs">
-								Thời gian làm việc
+								Chính sách
 							</h2>
 
 							<div class="small text-muted">
@@ -92,7 +107,7 @@
 								<a href="{{route('system.edit', ['id' => 'info'])}}" class="btn btn-warning btn-sm">
 									<i class="fa fa-edit"></i> Thay đổi thông tin
 								</a>
-								<a class="btn btn-success btn-sm"><i class="fa fa-globe"></i> Xem trang sản phẩm</a>
+								<a href="{{route('homepage')}}" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> Xem trang</a>
 							</div>
 						</div>                           				
 					</div>

@@ -104,13 +104,5 @@ Sửa thông tin liên hệ
 	<!-- Peity -->
 	<script src="{{asset('assets/js/demo/peity-demo.js')}}"></script>
 
-	<!-- <script>
-		$(document).ready(function(){
-			$('.i-checks').iCheck({
-				checkboxClass: 'icheckbox_square-green',
-				radioClass: 'iradio_square-green',
-			});
-		});
-	</script> -->
 
 	@stop

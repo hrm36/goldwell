@@ -23,14 +23,6 @@
 			</li>
 		</ol>
 	</div>
-	<div class="col-sm-8">
-		<div class="title-action">
-			<a href="#" class="btn btn-primary">Trang quy trình</a>
-			<a href="#" class="btn btn-primary">Trang công nghệ</a>
-			<a href="#" class="btn btn-primary">Trang chuyên mục</a>
-			<a href="#" class="btn btn-primary">Trang sản phẩm</a>
-		</div>
-	</div>
 </div>
 {{-- END Breadcrumb --}}
 
@@ -76,8 +68,8 @@
 					<div class="col-sm-10">
 						<div class="input-group">
 							<span class="input-group-btn">
-								<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
-								class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
+								<a href="{{env("URL_FILEMANAGE_1", "")}}"
+								class="btn btn-primary red iframe-btn" id="iframe-edit-info-brand"><i
 								class="fa fa-picture-o"></i>Chọn ảnh</a>
 							</span>
 							<input id="thumb_0" value="{{$info['image']}}" class="form-control" type="text" name="image" required>
@@ -118,31 +110,15 @@
 @section('script')
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('assets/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
-	var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
 	$(document).ready(function()
 	{
 		CKEDITOR.replace( 'content_sp_info' ,{
-			filebrowserBrowseUrl : fmPath,
-			filebrowserUploadUrl : fmPath,
-			filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+			filebrowserBrowseUrl : fmPath_2,
+			filebrowserUploadUrl : fmPath_2,
+			filebrowserImageBrowseUrl : fmPath_2,
 		});
-		$('#iframe-btn-0').fancybox({
-			'width': 900,
-			'height': 900,
-			'type': 'iframe',
-			'autoScale': false,
-			'autoSize': false,
-			afterClose: function () {
-				var thumb = $('#thumb_0').val();
-				if (thumb) {
-					var html = '<div class="img_preview"><img src="' + thumb + '" style="height: 300px" />';
-					html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
-					$('#preview').html(html);
-				}
-			}
-		});
+		settingIframe("#iframe-edit-info-brand");
 
 	});
 </script>

@@ -98,7 +98,7 @@ span.select2.select2-container.select2-container--default{
 								<div class="col-sm-10">
 									<div class="input-group">
 										<span class="input-group-btn">
-											<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
+											<a href="{{env("URL_FILEMANAGE_1", "")}}"
 											class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
 											class="fa fa-picture-o"></i>Chọn ảnh</a>
 										</span>
@@ -140,8 +140,6 @@ span.select2.select2-container.select2-container--default{
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/hrm.js')}}"></script>
 <script>
-var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
-
 $(document).ready(function()
 {
 	$(".choose-style").on('click', function() {
@@ -166,21 +164,6 @@ $(document).ready(function()
 		filebrowserBrowseUrl : fmPath,
 		filebrowserUploadUrl : fmPath,
 		filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-	});
-	$('#iframe-btn-0').fancybox({
-		'width': 900,
-		'height': 900,
-		'type': 'iframe',
-		'autoScale': false,
-		'autoSize': false,
-		afterClose: function () {
-			var thumb = $('#thumb_0').val();
-			if (thumb) {
-				var html = '<div class="img_preview"><img src="' + thumb + '"/>';
-				html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
-				$('#preview').html(html);
-			}
-		}
 	});
 
 	$('.product-images').slick({

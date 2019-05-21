@@ -101,8 +101,8 @@
 								<div class="col-sm-10">
 									<div class="input-group">
 										<span class="input-group-btn">
-											<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
-											class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
+											<a href="{{env("URL_FILEMANAGE_1", "")}}"
+											class="btn btn-primary red iframe-btn" id="iframe-create-media"><i
 											class="fa fa-picture-o"></i>Chọn ảnh</a>
 										</span>
 										<input id="thumb_0" class="form-control" type="text" name="image" required>
@@ -151,28 +151,7 @@
 {{-- Page content --}}
 
 @section('script')
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-<script>
-var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
-
-$(document).ready(function()
-{
-	$('#iframe-btn-0').fancybox({
-		'width': 900,
-		'height': 900,
-		'type': 'iframe',
-		'autoScale': false,
-		'autoSize': false,
-		afterClose: function () {
-			var thumb = $('#thumb_0').val();
-			if (thumb) {
-				var html = '<div class="img_preview"><img src="' + thumb + '"/>';
-				html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
-				$('#preview').html(html);
-			}
-		}
-	});
-});
+<script type="text/javascript">
+settingIframe("#iframe-create-media");	
 </script>
 @stop

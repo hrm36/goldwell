@@ -18,7 +18,9 @@ Route::get('/color/{slug}', 'HomeController@showPost')->name('show-color');
 Route::get('/{slug}.html', 'HomeController@showProduct')->name('show-product');
 Route::get('/contact', 'ContactController@getCreate')->name('contact');
 Route::post('/contact', 'ContactController@postCreate')->name('contact');
-
+Route::get('/gallery', 'HomeController@getAllGallery')->name('gallery-font-end');
+Route::get('/gallery/{slug}', 'HomeController@showGallery')->name('show-gallery');
+Route::get('/video', 'HomeController@videoPage')->name('video');
 /*
 |--------------------------------------------------------------------------
 | Back-end Routes
@@ -143,6 +145,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     })->name('gallery');
 
     Route::resource('system', 'SystemController');
+    Route::resource('seo', 'SeoController');
 });
 
 //AUTH

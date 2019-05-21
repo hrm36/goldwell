@@ -17,7 +17,7 @@ class Product extends Model
     }
     public function extra()
     {
-        return $this->hasMany('App\Extra');
+        return $this->hasMany('App\Extra','product_id');
     }
 
 }

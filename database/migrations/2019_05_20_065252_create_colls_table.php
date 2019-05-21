@@ -16,7 +16,7 @@ class CreateCollsTable extends Migration
         Schema::create('colls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->string('time');
             $table->boolean('status');
             $table->timestamps();

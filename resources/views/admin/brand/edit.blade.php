@@ -91,7 +91,7 @@ span.select2.select2-container.select2-container--default{
 											<div class="input-group">
 												<span class="input-group-btn">
 													<a href="{{env("URL_FILEMANAGE_1", "")}}"
-													class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
+													class="btn btn-primary red iframe-btn" id="iframe-edit-brand"><i
 													class="fa fa-picture-o"></i>Chọn ảnh</a>
 												</span>
 												<input id="thumb_0" class="form-control" type="text" name="image" value="{{$brand->image}}" required>
@@ -168,18 +168,6 @@ span.select2.select2-container.select2-container--default{
 	<script>
 		$(document).ready(function()
 		{
-			$(".choose-style").on('click', function() {
-		  //  ret = DetailsView.GetProject($(this).attr("#data-id"), OnComplete, OnTimeOut, OnError);
-		  style = $(this).attr("data-style");
-		  $(".choose-style").each(function( index ) {
-		  	$( this ).removeClass("btn-success");
-		  	$( this ).removeClass("btn-white");
-		  	$( this ).addClass("btn-white");
-		  });
-		  $( this ).removeClass("btn-white");
-		  $( this ).addClass("btn-success");
-		  $("#dis_type").val(style);
-		});
 
 			CKEDITOR.replace( 'des_f' ,{
 				filebrowserBrowseUrl : fmPath_2,
@@ -198,6 +186,7 @@ span.select2.select2-container.select2-container--default{
 			});
 
 			$(".select2_demo_2").select2();
+			settingIframe("#iframe-edit-brand");
 		});
 	</script>
 	@stop

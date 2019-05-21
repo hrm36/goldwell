@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('cat_id');
             $table->integer('dis_type');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->text('image');
             $table->text('sp_botro')->nullable();
             $table->text('des_s');

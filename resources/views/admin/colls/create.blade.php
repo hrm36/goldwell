@@ -65,7 +65,6 @@
 				<form class="form-horizontal" role="form" action="{{route('coll.store')}}" 
 				enctype="multipart/form-data" method="POST">
 				@csrf
-				@csrf
 				<!--Panel -->
 				<div class="panel-panel-default">
 					<div id="info" class="panel-collapse-collapse">

@@ -8397,3 +8397,6 @@ body.md-skin {
   border-radius: 5px;
   text-shadow: none;
 }
+.img_preview img {
+  max-width: 30%;
+}

@@ -16,7 +16,7 @@ class SystemController extends Controller
     public function index()
     {
         //
-        $_info = config('sys_page.info');
+        $_info = config('system.info');
         return view('admin.system.view', ['info' => $_info, 'flag' => 'info']);
     }
 
@@ -61,7 +61,7 @@ class SystemController extends Controller
     public function edit($id)
     {
         //
-        $_info = config('sys_page.info');
+        $_info = config('system.info');
         return view('admin.system.edit', ['info' => $_info, 'flag' => 'info_page']);
     }
 

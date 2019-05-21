@@ -1,7 +1,7 @@
 <?php return array (
   'thong-tin' => 
   array (
-    'image' => 'http://localhost/goldwell/public/source/1200_TOP_TEASER___BRAND_hover.jpg',
+    'image' => 'http://localhost/git/goldwell/public/storage/source/hinh-girl-xinh-thai-lan-Nene.jpg',
     'title' => 'WE THINK STYLIST',
     'content' => '<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; We hear you. We understand that partnership is more than great products.&nbsp;&nbsp;</strong></p>
 

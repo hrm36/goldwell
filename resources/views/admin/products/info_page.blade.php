@@ -66,7 +66,7 @@
 									<a href="{{route('thong-tin-trang-td')}}" class="btn btn-warning btn-sm">
 										<i class="fa fa-edit"></i> Thay đổi thông tin
 									</a>
-									<a class="btn btn-success btn-sm"><i class="fa fa-globe"></i> Xem trang sản phẩm</a>
+									<a href="{{route('homepage')}}" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> Xem trang sản phẩm</a>
 								</div>
 							</div>                           				
 						</div>

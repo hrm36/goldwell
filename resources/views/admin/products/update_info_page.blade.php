@@ -68,13 +68,13 @@
 					<div class="col-sm-10">
 						<div class="input-group">
 							<span class="input-group-btn">
-								<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
-								class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
+								<a href="{{env("URL_FILEMANAGE_1", "")}}"
+								class="btn btn-primary red iframe-btn" id="iframe-update-info-page"><i
 								class="fa fa-picture-o"></i>Chọn ảnh</a>
 							</span>
 							<input id="thumb_0" value="{{$info['image']}}" class="form-control" type="text" name="image" required>
 						</div>
-						<div id="preview">
+						<div id="preview" style="display: block;margin-bottom: 20px">
 							<img src="{{$info['image']}}" style="height: 300px" />
 						</div>
 					</div>
@@ -92,8 +92,8 @@
 				<link href="{{asset('assets/css/plugins/jasny/jasny-bootstrap.min.css')}}" rel="stylesheet">
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<button class="btn btn-white" type ="reset">Làm mới</button>
-						<button class="btn btn-primary" type="submit">Tạo mới</button>
+						<button class="btn btn-white" type ="reset">Reset</button>
+						<button class="btn btn-primary" type="submit">Cập nhật</button>
 					</div>
 				</div>	
 			</form>
@@ -109,33 +109,16 @@
 
 @section('script')
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('assets/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
-	var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
 	$(document).ready(function()
 	{
 		CKEDITOR.replace( 'content_sp_info' ,{
-			filebrowserBrowseUrl : fmPath,
-			filebrowserUploadUrl : fmPath,
-			filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-		});
-		$('#iframe-btn-0').fancybox({
-			'width': 900,
-			'height': 900,
-			'type': 'iframe',
-			'autoScale': false,
-			'autoSize': false,
-			afterClose: function () {
-				var thumb = $('#thumb_0').val();
-				if (thumb) {
-					var html = '<div class="img_preview"><img src="' + thumb + '" style="height: 300px" />';
-					html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
-					$('#preview').html(html);
-				}
-			}
+			filebrowserBrowseUrl : fmPath_2,
+			filebrowserUploadUrl : fmPath_2,
+			filebrowserImageBrowseUrl : fmPath_2,
 		});
 
+		settingIframe("#iframe-update-info-page");
 	});
 </script>
 @stop

@@ -23,14 +23,6 @@
 			</li>
 		</ol>
 	</div>
-	<div class="col-sm-8">
-		<div class="title-action">
-			<a href="#" class="btn btn-primary">Trang quy trình</a>
-			<a href="#" class="btn btn-primary">Trang công nghệ</a>
-			<a href="#" class="btn btn-primary">Trang chuyên mục</a>
-			<a href="#" class="btn btn-primary">Trang sản phẩm</a>
-		</div>
-	</div>
 </div>
 {{-- END Breadcrumb --}}
 
@@ -71,21 +63,41 @@
 					<div class="col-sm-10">
 						<div class="input-group">
 							<span class="input-group-btn">
-								<a href="/goldwell/filemanager/dialog.php?type=1&field_id=thumb_0"
-								class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
+								<a href="{{env("URL_FILEMANAGE_1", "")}}"
+								class="btn btn-primary red iframe-btn" id="iframe-edit-system"><i
 								class="fa fa-picture-o"></i>Chọn ảnh</a>
 							</span>
 							<input id="thumb_0" value="{{$info['logo']}}" class="form-control" type="text" name="logo" required>
 						</div>
 						<div id="preview">
-							<img src="{{$info['logo']}}" style="height: 300px" />
+							<img src="{{$info['logo']}}" style="max-width: 250px; margin: 20px 0;" />
 						</div>
 					</div>
 				</div>
 				<div class="form-group {{ $errors->has('facebook') ? 'has-error' : '' }}">
-					<label class="col-sm-2 control-label">Link FB (*) </label>
+					<label class="col-sm-2 control-label">Iframe FB (*) </label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="facebook" id="facebook" value="{{$info['facebook']}}">
+						<textarea name="facebook"  id="facebook" class="form-control my-editor" rows="20" required>
+							{{$info['facebook']}}
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group {{ $errors->has('url_facebook') ? 'has-error' : '' }}">
+					<label class="col-sm-2 control-label">Link FB</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="url_facebook" id="url_facebook" value="{{$info['url_facebook']}}">
+					</div>
+				</div>
+				<div class="form-group {{ $errors->has('url_ins') ? 'has-error' : '' }}">
+					<label class="col-sm-2 control-label">Link Instagram</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="url_ins" id="url_ins" value="{{$info['url_ins']}}">
+					</div>
+				</div>
+				<div class="form-group {{ $errors->has('url_you') ? 'has-error' : '' }}">
+					<label class="col-sm-2 control-label">Link Youtube</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="url_you" id="url_you" value="{{$info['url_you']}}">
 					</div>
 				</div>
 				<div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
@@ -96,7 +108,7 @@
 				</div>
 				<div class="form-group {{ $errors->has('open_time') ? 'has-error' : '' }}">
 
-					<label class="col-sm-2 control-label">Thời gian mở cửa (*) </label>
+					<label class="col-sm-2 control-label">Chính sách (*) </label>
 					<div class="col-sm-10">
 						<textarea name="open_time"  id="open_time" class="form-control my-editor" rows="20" required>
 							{{$info['open_time']}}
@@ -114,7 +126,7 @@
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
 						<button class="btn btn-white" type ="reset">Làm mới</button>
-						<button class="btn btn-primary" type="submit">Tạo mới</button>
+						<button class="btn btn-primary" type="submit">Cập nhật</button>
 					</div>
 				</div>	
 			</form>
@@ -131,36 +143,25 @@
 @section('script')
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('assets/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
-	var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
 	$(document).ready(function()
 	{
 		CKEDITOR.replace( 'open_time' ,{
-			filebrowserBrowseUrl : fmPath,
-			filebrowserUploadUrl : fmPath,
-			filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+			filebrowserBrowseUrl : fmPath_2,
+			filebrowserUploadUrl : fmPath_2,
+			filebrowserImageBrowseUrl : fmPath_2,
 		});
 		CKEDITOR.replace( 'address' ,{
-			filebrowserBrowseUrl : fmPath,
-			filebrowserUploadUrl : fmPath,
-			filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+			filebrowserBrowseUrl : fmPath_2,
+			filebrowserUploadUrl : fmPath_2,
+			filebrowserImageBrowseUrl : fmPath_2,
 		});
-		$('#iframe-btn-0').fancybox({
-			'width': 900,
-			'height': 900,
-			'type': 'iframe',
-			'autoScale': false,
-			'autoSize': false,
-			afterClose: function () {
-				var thumb = $('#thumb_0').val();
-				if (thumb) {
-					var html = '<div class="img_preview"><img src="' + thumb + '" style="height: 300px" />';
-					html += '<input type="hidden" name="logo" value="' + thumb + '" /> </div>';
-					$('#preview').html(html);
-				}
-			}
+		CKEDITOR.replace( 'facebook' ,{
+			filebrowserBrowseUrl : fmPath_2,
+			filebrowserUploadUrl : fmPath_2,
+			filebrowserImageBrowseUrl : fmPath_2,
 		});
+		settingIframe("#iframe-edit-system");
 
 	});
 </script>

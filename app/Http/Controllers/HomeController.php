@@ -9,6 +9,8 @@ use App\News;
 use App\ColorRoom;
 use App\Product;
 use App\Cat;
+use App\Coll;
+use App\Media;
 
 class HomeController extends Controller
 {
@@ -44,7 +46,33 @@ class HomeController extends Controller
         $_info_n = config('news.thong-tin');
         $_info_b = config('brand.thong-tin');
         $_info_c = config('color.thong-tin');
-        return view('welcome', ['p'=>$_info_p, 'n'=>$_info_n, 'b'=>$_info_b, 'c'=>$_info_c]);
+
+        //get bo suu tap
+        $_cls = Coll::orderby('created_at', "DESC")->where('status',1)->take(3)->get();
+
+        $_videos = Media::orderby('created_at', "DESC")->where('status',1)->where('type',0)->take(5)->get();
+        $_videoos = Media::orderby('created_at', "DESC")->where('status',1)->where('type',0)->take(5)->get();
+        return view('welcome', ['p'=>$_info_p, 'n'=>$_info_n, 'b'=>$_info_b, 'c'=>$_info_c, 'cls' => $_cls, 'videos' =>$_videos]);
+        return view('font-end.page.video', ['videoos' =>$_videoos]);
+    }
+
+     public function videoPage()
+    {
+        $_videoos = Media::orderby('created_at', "DESC")->where('status',1)->where('type',0)->take(5)->get();
+        return view('font-end.page.video', ['videoos' =>$_videoos]);
+    }
+
+    public function getAllGallery()
+    {
+        $_cls = Coll::orderby('created_at', "DESC")->where('status',1)->paginate(9);
+        return view('font-end.page.gallery', ['cls' => $_cls]);
+    }
+
+    public function showGallery($slug)
+    {
+        $_cl = Coll::where('status', 1)->where('slug', $slug)->first();
+        if (!isset($_cl)) return abort(404);
+        return view('font-end.page.single-gallery', ['cl' => $_cl]);
     }
 
     public function listPost(Request $request)
@@ -104,7 +132,7 @@ class HomeController extends Controller
             $_info = config('brand.thong-tin');
             $_post = Brand::where('status', 1)->where('slug', $slug)->first();
             $_link = route('brand');
-        }else if ($request->is('color-zoom/*')) {
+        }else if ($request->is('color/*')) {
             $_info = config('color.thong-tin');
             $_post = ColorRoom::where('status', 1)->where('slug', $slug)->first();
             $_link = route('color');
@@ -121,12 +149,18 @@ class HomeController extends Controller
     public function showProduct($slug)
     {
         $_product = Product::where('status',1)->where('slug', $slug)->first();
+
+        //SP LIEN QUAN
+        $_cat = null;
+        if(isset($_product->cat_id)) $_cat = Cat::find($_product->cat_id);  
+
+        
         if (isset($_product)){
             $type = $_product->dis_type;
-            if ($type == 1){
-                return view('font-end.page.single-post', ['_post'=>$_product, '_link' =>route('categories'), '_title' => 'PRODUCTS']);
+            if ($type == 2){
+                return view('font-end.page.single-product-2', ['_post'=>$_product, 'cat' =>$_cat]);
             }else {
-                return view('font-end.page.single-product', ['_post'=>$_product]);
+                return view('font-end.page.single-product', ['_post'=>$_product, 'cat' =>$_cat]);
             }
         }
     }

@@ -4,13 +4,13 @@
 			<div class="list-social">
 				<ul>
 					<li>
-						<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						<a href="{{$info_s['url_facebook']}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+						<a href="{{$info_s['url_ins']}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+						<a href="{{$info_s['url_you']}}"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -19,7 +19,7 @@
 			<div class="logo">
 				<h1>
 					<a href="{{route('homepage')}}">
-						<img src="https://www.goldwell.us/typo3conf/ext/gldw_config/Resources/Public/Templates/gfx/frontend/images/goldwell_logo.svg" alt="">
+						<img src="{{$info_s['logo']}}" alt="">
 					</a>
 				</h1>
 			</div>
@@ -46,10 +46,10 @@
 				<li class="spacer navbar-inner subnavi"><a href="{{route('categories')}}">Sản phẩm</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="#">Bộ sưu tập</a>
+					<a href="{{route('gallery-font-end')}}">Bộ sưu tập</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="#">Videos</a>
+					<a href="{{route('video')}}">Videos</a>
 				</li>
 			</ul>
 		</div>

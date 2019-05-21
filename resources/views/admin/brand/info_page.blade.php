@@ -23,14 +23,6 @@
 			</li>
 		</ol>
 	</div>
-	<div class="col-sm-8">
-		<div class="title-action">
-			<a href="#" class="btn btn-primary">Trang quy trình</a>
-			<a href="#" class="btn btn-primary">Trang công nghệ</a>
-			<a href="#" class="btn btn-primary">Trang chuyên mục</a>
-			<a href="#" class="btn btn-primary">Trang sản phẩm</a>
-		</div>
-	</div>
 </div>
 {{-- END Breadcrumb --}}
 

@@ -20,7 +20,7 @@ class CreateCatsTable extends Migration
             $table->text('des_s')->nullable();
             $table->integer('cat_id')->nullable();
             $table->integer('type');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->boolean('status');
             $table->timestamps();
         });

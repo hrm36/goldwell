@@ -11,11 +11,11 @@
 			</div>
 		</div>
 		<div class="header-page col-md-12">
-			<h1>SYSTEM</h1>
-			<p class="bodytext">BEAUTIFUL HAIR IS IN YOUR HANDS.</p>
+			<h1>{!! $_post->name !!}</h1>
+			<p class="bodytext">{!! $_post->des_s !!}</p>
 		</div>
 		<div class="image-intro">
-			<img src="https://www.goldwell.us/fileadmin/_processed_/7/f/csm_products_categories_topteaser_a2a9e3e25e.jpg">
+			<img src="{{$_post->image}}">
 		</div>
 		<div class="divider">
 			<div class="reddot"></div>
@@ -23,13 +23,10 @@
 		<div class="list-content">	
 			<div class="row text">
 				<div class="col-md-12">
-					<h2>BENEFITS</h2>
+					<h2>NỘI DUNG</h2>
 					<div class="content">	
-						<p class="bodytext">• Unlimited freedom to fuel your <b>creativity</b>
+						<p class="bodytext">{!! $_post->des_f !!}
 						</p>
-						<p class="bodytext">• Individual color services, <b>customized </b>to fulfill your clients’ wishes
-						</p>
-						<p class="bodytext">• High-performing integrated system to build your <b>confidence </b>for all your color services </p>
 					</div>
 				</div>
 			</div>
@@ -39,12 +36,15 @@
 			</div>
 			<div class="row text">
 				<div class="col-md-12">
-					<h2>ASSORTMENT</h2>
+					<h2>QUY TRÌNH</h2>
 					<div class="content">	
-						@include("font-end.partials.item-news")
-						@include("font-end.partials.item-news")
-						@include("font-end.partials.item-news")
-						@include("font-end.partials.item-news")
+						@if($_post->extra != null)
+							@foreach($_post->extra as $_xt)
+								@if($_xt->type == 0)
+									@include("font-end.partials.item-quytrinh", ['item' =>$_xt])
+								@endif
+							@endforeach
+						@endif
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 			</div>
 			<div class="row text">
 				<div class="col-md-12">
-					<h2>ASSORTMENT</h2>
+					<h2>CÔNG NGHỆ</h2>
 					<div class="content">	
 						<div class="product-slides clear clearfix">
 							<ul class="product-slide">
@@ -71,7 +71,7 @@
 			</div>
 			<div class="row text">
 				<div class="col-md-12">
-					<h2>RELATED PRODUCTS</h2>
+					<h2>SẢN PHẨM LIÊN QUAN</h2>
 					<div class="content">	
 						@include("font-end.partials.item-related")
 						@include("font-end.partials.item-related")

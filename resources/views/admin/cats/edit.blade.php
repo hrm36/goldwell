@@ -59,7 +59,8 @@
 				</div>
 				@endif
 				<form class="form-horizontal" role="form" action="{{route('update-dm',['id'=>$cat->id])}}" 
-				enctype="multipart/form-data" method="POST">
+					enctype="multipart/form-data" method="POST">
+					@csrf
 					<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Tên chuyên mục</label>
 						<div class="col-md-4">
@@ -69,7 +70,7 @@
 					<div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Slug</label>
 						<div class="col-md-4">
-							<input type="text" class="form-control" name="slug" id="slug" value="{{old('slug')}}" required>                                
+							<input type="text" class="form-control" name="slug" id="slug" value="{{$cat->name}}" required>                                
 						</div>
 					</div>
 					<div class="form-group {{ $errors->has('cat_id') ? 'has-error' : '' }}">
@@ -78,7 +79,7 @@
 							<select class="form-control m-b" name="cat_id" id="cat_id" required>
 								<option value="">Chọn chuyên mục</option>
 								@foreach($catlist as $p)
-									<option value="{{$p->id}}">{{$p->name}}</option>
+								<option value="{{$p->id}}" {{ $cat->cat_id == $p->id ? "selected" : "" }}>{{$p->name}}</option>
 								@endforeach
 							</select>                                       
 						</div>
@@ -87,31 +88,57 @@
 						<label class="col-sm-2 control-label">Loại chuyên mục</label>
 						<div class="col-md-4">
 							<select class="form-control m-b" name="type" id="type" required>
-								<option value="0">Có chuyên mục con</option>
-								<option value="1">Không có chuyên mục con</option>
+								<option value="0" {{ $cat->type == 0 ? "selected" : "" }}>Có chuyên mục con</option>
+								<option value="1" {{ $cat->type == 1 ? "selected" : "" }}>Không có chuyên mục con</option>
 							</select>                                       
+						</div>
+					</div>
+
+					<div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
+						<label class="col-sm-2 control-label">Banner (*)</label>
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<a href="{{env("URL_FILEMANAGE_1", "")}}"
+									class="btn btn-primary red iframe-btn" id="iframe-edit-cat"><i
+									class="fa fa-picture-o"></i>Chọn ảnh</a>
+								</span>
+								<input id="thumb_0" value="{{$cat->image}}" class="form-control" type="text" name="image" required>
+							</div>
+							<div id="preview">
+								<div class="img_preview"><img src="{{$cat->image}}"/></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group {{ $errors->has('des') ? 'has-error' : '' }}">
+						<label class="col-sm-2 control-label">Miêu tả ngắn (*) </label>
+						<div class="col-sm-10">
+							<textarea name="des_s" id="des_s" class="form-control my-editor" rows="20" required>
+								{{$cat->des_s}}
+							</textarea>
 						</div>
 					</div>
 					<div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
 						<label class="col-sm-2 control-label">Trạng thái</label>
 						<div class="col-md-4">
 							<select class="form-control m-b" name="status" id="status" required>
-								<option value="1">Đã đăng</option>
-								<option value="0">Chờ duyệt</option>
+								<option value="1" {{ $cat->status == 1 ? "selected" : "" }}>Đã đăng</option>
+								<option value="0" {{ $cat->status == 0 ? "selected" : "" }}>Chờ duyệt</option>
 							</select>                                       
 						</div>
 					</div>
 					<div class="form-group">
-					<div class="col-sm-4 col-sm-offset-2">
-						<button class="btn btn-white" type ="reset">Làm mới</button>
-						<button class="btn btn-primary" type="submit">Cập nhật</button>
-					</div>
-				</div>	
-				@csrf
+						<div class="col-sm-4 col-sm-offset-2">
+							<button class="btn btn-white" type ="reset">Làm mới</button>
+							<button class="btn btn-primary" type="submit">Cập nhật</button>
+						</div>
+					</div>	
+					@csrf
 				</form>	
+			</div>
 		</div>
-	</div>
-</div>		
+	</div>		
 </div>
 {{-- END Main Content --}}
 
@@ -121,60 +148,20 @@
 @section('script')
 <!-- slick carousel-->
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('assets/js/plugins/slick/slick.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/hrm.js')}}"></script>
 <script>
-var fmPath = '/goldwell/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
-
-$(document).ready(function()
-{
-	$(".choose-style").on('click', function() {
-		  //  ret = DetailsView.GetProject($(this).attr("#data-id"), OnComplete, OnTimeOut, OnError);
-		  style = $(this).attr("data-style");
-		  $(".choose-style").each(function( index ) {
-		  	$( this ).removeClass("btn-success");
-		  	$( this ).removeClass("btn-white");
-		  	$( this ).addClass("btn-white");
-		  });
-		  $( this ).removeClass("btn-white");
-		  $( this ).addClass("btn-success");
-		  $("#dis_type").val(style);
+	$(document).ready(function()
+	{
+		settingIframe("#iframe-edit-cat");
+		CKEDITOR.replace( 'des_s' ,{
+			filebrowserBrowseUrl : fmPath_2,
+			filebrowserUploadUrl : fmPath_2,
+			filebrowserImageBrowseUrl : fmPath_2,
 		});
-	CKEDITOR.replace( 'des_f' ,{
-		filebrowserBrowseUrl : fmPath,
-		filebrowserUploadUrl : fmPath,
-		filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-	});
 
-	CKEDITOR.replace( 'des_s' ,{
-		filebrowserBrowseUrl : fmPath,
-		filebrowserUploadUrl : fmPath,
-		filebrowserImageBrowseUrl : '/goldwell/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
 	});
-	$('#iframe-btn-0').fancybox({
-		'width': 900,
-		'height': 900,
-		'type': 'iframe',
-		'autoScale': false,
-		'autoSize': false,
-		afterClose: function () {
-			var thumb = $('#thumb_0').val();
-			if (thumb) {
-				var html = '<div class="img_preview"><img src="' + thumb + '"/>';
-				html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
-				$('#preview').html(html);
-			}
-		}
-	});
-
-	$('.product-images').slick({
-		dots: true
-	});
-
-	$(".select2_demo_2").select2();
-});
+	
 </script>
 @stop

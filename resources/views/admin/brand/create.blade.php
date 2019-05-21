@@ -115,9 +115,8 @@ span.select2.select2-container.select2-container--default{
 								<div class="col-sm-10">
 									<div class="input-group">
 										<span class="input-group-btn">
-											<a href="{{env("URL_FILEMANAGE_1", "")}}"
-											class="btn btn-primary red iframe-btn" id="iframe-btn-0"><i
-											class="fa fa-picture-o"></i>Chọn ảnh</a>
+											<a href="{{env("URL_FILEMANAGE_1", "")}}" class="btn btn-primary red iframe-btn" id="iframe-create-brand">
+											<i class="fa fa-picture-o"></i>Chọn ảnh</a>
 										</span>
 										<input id="thumb_0" class="form-control" type="text" name="image" required>
 									</div>
@@ -162,8 +161,6 @@ span.select2.select2-container.select2-container--default{
 <!-- slick carousel-->
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('assets/js/plugins/slick/slick.min.js')}}"></script>
-<script src="{{asset('assets/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
-
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/hrm.js')}}"></script>
 <script>
@@ -200,6 +197,7 @@ $(document).ready(function()
 	});
 
 	$(".select2_demo_2").select2();
+	settingIframe("#iframe-create-brand");
 });
 </script>
 @stop

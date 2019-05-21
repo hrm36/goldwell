@@ -76,7 +76,7 @@ $config = array(
     | with start and final /
     |
     */
-    'upload_dir' => '/hrm-projects/goldwell/public/storage/source/',
+    'upload_dir' => '/git/goldwell/public/storage/source/',
     /*
     |--------------------------------------------------------------------------
     | relative path from filemanager folder to upload folder
@@ -107,7 +107,7 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_upload_dir' => '/hrm-projects/goldwell/public/storage/thumbs/',
+    'thumbs_upload_dir' => '/git/goldwell/public/storage/thumbs/',
 
 
     /*

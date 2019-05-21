@@ -25,29 +25,16 @@ jQuery(document).ready(function($) {
     gallery:true,
     item:1,
     vertical:true,
-    verticalHeight:430,
-    vThumbWidth:300,
-    thumbItem:5,
-    thumbMargin:4,
+    verticalHeight:450,
+    vThumbWidth:280,
+    thumbItem:3,
+    thumbMargin:10,
     enableThumbDrag: true,
     slideMargin:40,
+    controls: false,
     onAfterSlide: function (el) {
         prevSlide = slider.getCurrentSlideCount();
     },
-    onBeforeSlide: function (el) {
-        if (prevSlide) {
-            console.log(prevSlide)
-            var youtubePlayer = jQuery('#lightSlider li').eq(prevSlide - 1).find('.ls-youtube').get(0),
-            vimeoPlayer = jQuery('#lightSlider li').eq(prevSlide - 1).find('.ls-vimeo').get(0);
-            console.log(vimeoPlayer)
-            if (youtubePlayer) {
-                youtubePlayer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-            } else if (vimeoPlayer) {
-                jQueryf(vimeoPlayer).api("pause");
-            }
-        }
-
-    }
 });
   jQuery().fancybox({
     selector : '[data-fancybox="gallery"], .gallery-item a',
