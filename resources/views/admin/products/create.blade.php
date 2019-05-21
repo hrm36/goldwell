@@ -70,14 +70,14 @@ span.select2.select2-container.select2-container--default{
 								<div class="ibox product-detail">
 									<div class="ibox-content">
 										<div class="row">
-											<div class="col-md-4">
+											<div class="col-md-3">
 												<div>
-													<img src="http://localhost/goldwell/public/source/System/style-product/style-1.png" style="max-width: 100%; max-height: 100%;">
+													<img src="http://khotheme.hamrongmedia.com/goldwell/source/System/style-product/style-1.png" style="max-width: 100%; max-height: 100%;">
 												</div>
 											</div>
 											<div class="col-md-4">
 												<div>
-													<img src="http://localhost/goldwell/public/source/System/style-product/style-2.png" style="max-width: 100%; max-height: 100%;">
+													<img src="http://khotheme.hamrongmedia.com/goldwell/source/System/style-product/style-2.png" style="max-width: 100%; max-height: 100%;">
 												</div>
 											</div>
 											<div class="col-md-3">

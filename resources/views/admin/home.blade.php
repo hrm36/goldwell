@@ -1,7 +1,7 @@
 @extends('admin.layouts.default')
 
 @section('title')
-Thư viện ảnh
+Bảng tin
 @parent
 @stop
 
@@ -9,13 +9,10 @@ Thư viện ảnh
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
-		<h2>Thư viện</h2>
+		<h2>Bảng tin</h2>
 		<ol class="breadcrumb">
 			<li>
-				<a href="{{route('dashboard')}}">Home</a>
-			</li>
-			<li>
-				<a>Thư viện</a>
+				<a href="#">Home</a>
 			</li>
 		</ol>
 	</div>
@@ -24,6 +21,6 @@ Thư viện ảnh
 	</div>
 </div>
 <div class="wrapper wrapper-content">
-	<iframe src="{{url('../filemanager/dialog.php?type=0&field_id=thumb_0')}}" style="width: 100%; height: 800px; overflow: hidden; border: none;"></iframe>
+	@include('admin.partials.dashboard')
 </div>
 @stop

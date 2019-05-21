@@ -59,7 +59,7 @@ class ProductController extends Controller
     public function create()
     {
         $list_p = Product::where('status', 1)->get();
-        $cat_p_ = Cat::where('status',1)->where('type',0)->get();
+        $cat_p_ = Cat::where('status',1)->where('type',1)->get();
         return view('admin.products.create',['cat'=> $cat_p_ , 'list'=> $list_p , 'flag' => 'p_n']);
     }
 
@@ -101,7 +101,9 @@ class ProductController extends Controller
     {
         //
         $product_ = Product::where('slug', $slug)->first();
-        return view('admin.products.edit',['flag' => 'p_l', 'product' => $product_]);
+        $list_p = Product::where('status', 1)->get();
+        $cat_p_ = Cat::where('status',1)->where('type',1)->get();
+        return view('admin.products.edit',['cat'=> $cat_p_ , 'list'=> $list_p, 'flag' => 'p_l', 'product' => $product_]);
     }
 
     /**

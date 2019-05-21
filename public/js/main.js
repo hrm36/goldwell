@@ -20,6 +20,35 @@ jQuery(document).ready(function($) {
     prevHtml:'<i class="fa fa-angle-left"></i>',
     nextHtml:'<i class="fa fa-angle-right"></i>',
 });
+  var prevSlide = null;
+  var slider = jQuery('#lightSlider').lightSlider({
+    gallery:true,
+    item:1,
+    vertical:true,
+    verticalHeight:430,
+    vThumbWidth:300,
+    thumbItem:5,
+    thumbMargin:4,
+    enableThumbDrag: true,
+    slideMargin:40,
+    onAfterSlide: function (el) {
+        prevSlide = slider.getCurrentSlideCount();
+    },
+    onBeforeSlide: function (el) {
+        if (prevSlide) {
+            console.log(prevSlide)
+            var youtubePlayer = jQuery('#lightSlider li').eq(prevSlide - 1).find('.ls-youtube').get(0),
+            vimeoPlayer = jQuery('#lightSlider li').eq(prevSlide - 1).find('.ls-vimeo').get(0);
+            console.log(vimeoPlayer)
+            if (youtubePlayer) {
+                youtubePlayer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            } else if (vimeoPlayer) {
+                jQueryf(vimeoPlayer).api("pause");
+            }
+        }
+
+    }
+});
   jQuery().fancybox({
     selector : '[data-fancybox="gallery"], .gallery-item a',
     loop     : true,

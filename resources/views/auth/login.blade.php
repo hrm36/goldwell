@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Login</title>
+    <title>GOLDWELL VIỆT NAM CMS</title>
 
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
@@ -20,11 +20,8 @@
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <div>
-               <img alt="image" class="img-circle" src="{{asset('source/ajinomoto/logo/logo-ajinomoto.png')}}" />
-
-            </div>
-            <h3>Goldwell CMS</h3>
+           
+            <h3>GOLDWELL VIỆT NAM CMS</h3>
            
             <p>Đăng nhập để sử dụng hệ thống</p>
             <form method="POST" class="m-t" action="{{ route('login') }}">
@@ -49,17 +46,12 @@
             </span>
             @enderror
         </div>
-
         <button type="submit" class="btn btn-primary block full-width m-b">Đăng nhập</button>
         @if (Route::has('password.request'))
         <a class="btn btn-link" href="{{ route('password.request') }}">
             {{ __('Quên mật khẩu?') }}
         </a>
         @endif
-
-
-        <p class="text-muted text-center"><small>Chưa có tài khoản?</small></p>
-        <a class="btn btn-sm btn-white btn-block" href="register.html">Tạo tài khoản mới</a>
     </form>
 </div>
 </div>

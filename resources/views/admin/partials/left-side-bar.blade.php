@@ -1,5 +1,7 @@
  <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
+        <input type="hidden" name="_url_filemanage_1" id="_url_filemanage_1" value="{{env("URL_FILEMANAGE_1", "")}}">
+        <input type="hidden" name="_url_filemanage_2" id="_url_filemanage_2" value="{{env("URL_FILEMANAGE_2", "")}}">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> 
@@ -27,7 +29,7 @@
                 </div>
             </li>
             <li class={{$flag == "dashboard" ? "active" : ""}}>
-                <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Bảng tin</span></span></a>
+                <a href="{{route('dashboard')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Bảng tin</span></span></a>
             </li>
 
             <li class={{$flag == "p_l" || $flag == "p_n" || $flag == "cat_p_l" || $flag == "list_ext" || $flag == "create_ext" || $flag == "create_ext"   
@@ -182,7 +184,7 @@
             </li>
 
             <li class="landing_link">
-                <a target="_blank" href=""><i class="fa fa-globe"></i> <span class="nav-label">WEBSITE</span>
+                <a target="_blank" href="{{route('homepage')}}"><i class="fa fa-globe"></i> <span class="nav-label">WEBSITE</span>
             </li>
         </ul>
     </div>

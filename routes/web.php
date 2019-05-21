@@ -26,9 +26,7 @@ Route::post('/contact', 'ContactController@postCreate')->name('contact');
 */
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     // BANG TIN
-    Route::get('/', function () {
-        return view('admin.layouts.default',['flag' => 'dashboard']);
-    })->name('dashboard');
+    Route::get('/', '\App\Http\Controllers\Admin\HomeController@index')->name('dashboard');
     
     //SAN PHAM
     Route::prefix('san-pham')->group(function () {

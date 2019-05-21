@@ -76,7 +76,7 @@ $config = array(
     | with start and final /
     |
     */
-    'upload_dir' => '/goldwell/public/source/',
+    'upload_dir' => '/hrm-projects/goldwell/public/storage/source/',
     /*
     |--------------------------------------------------------------------------
     | relative path from filemanager folder to upload folder
@@ -85,7 +85,7 @@ $config = array(
     | with final /
     |
     */
-    'current_path' => '../public/source/',
+    'current_path' => '../storage/app/public/source/',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_base_path' => '../public/thumbs/',
+    'thumbs_base_path' => '../storage/app/public/thumbs/',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_upload_dir' => '/goldwell/public/thumbs/',
+    'thumbs_upload_dir' => '/hrm-projects/goldwell/public/storage/thumbs/',
 
 
     /*

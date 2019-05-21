@@ -32,24 +32,24 @@
 		<div class="nav-navigation">
 			<ul class="center main-nav">
 				<li class="spacer navbar-inner">
-					<a href="{{route('news')}}">News &amp; Events</a>
+					<a href="{{route('homepage')}}">Trang chủ</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="{{route('brand')}}">Brand</a>
+					<a href="{{route('news')}}">Tin tức & sự  kiên</a>
+				</li>
+				<li class="spacer navbar-inner">
+					<a href="{{route('brand')}}">Thương hiệu</a>
 				</li>
 				<li class="spacer navbar-inner">
 					<a href="{{route('color')}}">COLOR ZOOM 2019</a>
 				</li>
-				<li class="spacer navbar-inner">
-					<a href="#">Services</a>
+				<li class="spacer navbar-inner subnavi"><a href="{{route('categories')}}">Sản phẩm</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="#">Salon Success</a>
+					<a href="#">Bộ sưu tập</a>
 				</li>
 				<li class="spacer navbar-inner">
-					<a href="#">Education</a>
-				</li>
-				<li class="spacer navbar-inner subnavi"><a href="{{route('categories')}}">Products</a>
+					<a href="#">Videos</a>
 				</li>
 			</ul>
 		</div>
