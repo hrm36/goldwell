@@ -4,11 +4,11 @@
 <section id="content-home">
     <div class="container">
         <div class="list-item-home">
-            @include('font-end.partials.item-home', array('name' => $p['title'], 'image'=> $p['image'], 'link'=> route('products')))
-            @include('font-end.partials.item-home', array('name' => $n['title'], 'image'=> $n['image'], 'link'=> route('news')))
-            @include('font-end.partials.item-home', array('name' => $b['title'], 'image'=> $b['image'], 'link'=> route('brand')))
-            @include('font-end.partials.item-home', array('name' => $c['title'], 'image'=> $c['image'], 'link'=> route('color')))
-
+        @if($bst->count() > 0)
+          @foreach($bst as $_bst)
+            @include('font-end.partials.item-home', array('name' =>$_bst->text, 'image'=> $_bst->image, 'link'=> $_bst->link))
+          @endforeach
+        @endif
         </div>
         <div class="gallery-home">
         	<div class="title-gallery-home">

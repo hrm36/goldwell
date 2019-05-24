@@ -66,6 +66,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('coll', 'CollController');
     Route::resource('media', 'MediaController');
 
+    Route::resource('banner', '\App\Http\Controllers\Admin\BannerController');
+    Route::get('/setup-number-display', '\App\Http\Controllers\Admin\BannerController@setupNumber')->name('setup-number');
+    Route::post('/save-number-display', '\App\Http\Controllers\Admin\BannerController@saveNumber')->name('save-number');
+
     //TIN TUC
     Route::prefix('news')->group(function () {
         //quản lí bài viết

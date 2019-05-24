@@ -69,8 +69,7 @@
                     </li>
                     <li class={{$flag == "gd" ? "active" : ""}}>
                         <a href="{{route('thong-tin-trang')}}">GIAO DIỆN TRANG TỔNG</a>
-                    </li>
-                    
+                    </li>                    
                 </ul>                   
             </li>
 
@@ -124,6 +123,20 @@
                     </li>
                     <li class={{$flag == "setup_color" ? "active" : ""}}>
                         <a href="{{route('page-color')}}">GIAO DIỆN TRANG TỔNG</a>
+                    </li>
+                </ul>                   
+            </li>
+            <li class={{$flag == "banner" || $flag == "num_bst"  ? "active" : ""}}>
+                <a href="#"><i class="fa fa-newspaper-o"></i> 
+                    <span class="nav-label">SETUP TRANG CHỦ </span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                   <li class={{$flag == "banner" ? "active" : ""}}>
+                        <a href="{{route('banner.index')}}">Banner</a>
+                    </li>
+                    <li class={{$flag == "num_bst" ? "active" : ""}}>
+                        <a href="{{route('setup-number')}}">Số lượng hiển thị</a>
                     </li>
                 </ul>                   
             </li>

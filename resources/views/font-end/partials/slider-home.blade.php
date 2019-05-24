@@ -1,24 +1,24 @@
 <div class="home-slider">
 	<div class="home-slides clear clearfix">
 		<ul class="home-slide">
-			@include("font-end.partials.item-slider")
-			<li class="slide-it">
-				<a href="products/care/dualsenses/">
-					<img src="https://www.goldwell.us/fileadmin/_processed_/d/8/csm_Fullscreen_A04_efba120c33.jpg" alt="" class="init">
-					<div class="slide-content-wrap black">
-						<div class="description">
-							<span>DISCOVER THE NEXT GENERATION OF COLOR LUMINOSITY – THE NEW DUALSENSES</span>
-							<br>
+			@if($sls->count() > 0)
+				@foreach($sls as $sl)
+				<li class="slide-it">
+					<a href="{{$sl->link}}">
+						<img src="{{$sl->image}}" alt="" class="init">
+						<div class="slide-content-wrap black">
+							<div class="description">
+								<span>{{$sl->text}}</span>
+								<br>
+							</div>
+							<div class="title">
+								<span>XEM THÊM</span>
+							</div>
 						</div>
-						<div class="title">
-							<span>MORE INFO</span>
-						</div>
-					</div>
-				</a>
-			</li>
-			@include("font-end.partials.item-slider")
-			@include("font-end.partials.item-slider")
-			@include("font-end.partials.item-slider")
+					</a>
+				</li>
+				@endforeach
+			@endif
 		</ul>
 	</div>
 </div>

@@ -11,6 +11,7 @@ use App\Product;
 use App\Cat;
 use App\Coll;
 use App\Media;
+use App\Banner;
 
 class HomeController extends Controller
 {
@@ -46,14 +47,17 @@ class HomeController extends Controller
         $_info_n = config('news.thong-tin');
         $_info_b = config('brand.thong-tin');
         $_info_c = config('color.thong-tin');
+        $_num_dis = config('system.number_display');
 
         //get bo suu tap
         $_cls = Coll::orderby('created_at', "DESC")->where('status',1)->take(3)->get();
 
+        $_sls = Banner::where('status', 1)->where('type', 1)->get();
+        $_bst = Banner::where('status', 1)->where('type', 2)->take($_num_dis)->get();
+
         $_videos = Media::orderby('created_at', "DESC")->where('status',1)->where('type',0)->take(5)->get();
         $_videoos = Media::orderby('created_at', "DESC")->where('status',1)->where('type',0)->take(5)->get();
-        return view('welcome', ['p'=>$_info_p, 'n'=>$_info_n, 'b'=>$_info_b, 'c'=>$_info_c, 'cls' => $_cls, 'videos' =>$_videos]);
-        return view('font-end.page.video', ['videoos' =>$_videoos]);
+        return view('welcome', ['sls' => $_sls, 'bst' =>  $_bst, 'p'=>$_info_p, 'n'=>$_info_n, 'b'=>$_info_b, 'c'=>$_info_c, 'cls' => $_cls, 'videos' =>$_videos]);
     }
 
      public function videoPage()

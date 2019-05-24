@@ -11,7 +11,7 @@ function settingIframe(_id){
 			afterClose: function () {
 				var thumb = $('#thumb_0').val();
 				if (thumb) {
-					var html = '<div class="img_preview"><img src="' + thumb + '"/>';
+					var html = '<div class="img_preview" style="margin-bottom: 20px; width:100%"><img src="' + thumb + '"/>';
 					html += '<input type="hidden" name="image" value="' + thumb + '" /> </div>';
 					$('#preview').html(html);
 				}

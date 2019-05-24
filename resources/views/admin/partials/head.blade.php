@@ -17,3 +17,4 @@
 
 <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('assets/fancybox/source/jquery.fancybox.css')}}">

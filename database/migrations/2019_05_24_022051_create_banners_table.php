@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCollsTable extends Migration
+class CreateBannersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCollsTable extends Migration
      */
     public function up()
     {
-        Schema::create('colls', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('image');
-            $table->string('name');
-            $table->string('slug');
-            $table->string('time');
+            $table->string('text')->nullable();
+            $table->string('link')->nullable();
+            $table->integer('type');
             $table->boolean('status');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateCollsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colls');
+        Schema::dropIfExists('banners');
     }
 }

@@ -368,6 +368,7 @@ class ComposerStaticInitc953194fdbdd07f4b44ad3798627d881
     );
 
     public static $classMap = array (
+        'App\\Banner' => __DIR__ . '/../..' . '/app/Banner.php',
         'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',
         'App\\Cat' => __DIR__ . '/../..' . '/app/Cat.php',
         'App\\Coll' => __DIR__ . '/../..' . '/app/Coll.php',
@@ -376,6 +377,8 @@ class ComposerStaticInitc953194fdbdd07f4b44ad3798627d881
         'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Extra' => __DIR__ . '/../..' . '/app/Extra.php',
+        'App\\Homeproduct' => __DIR__ . '/../..' . '/app/Homeproduct.php',
+        'App\\Http\\Controllers\\Admin\\BannerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BannerController.php',
         'App\\Http\\Controllers\\Admin\\CatController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CatController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
         'App\\Http\\Controllers\\Admin\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductController.php',
@@ -395,6 +398,7 @@ class ComposerStaticInitc953194fdbdd07f4b44ad3798627d881
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\MediaController' => __DIR__ . '/../..' . '/app/Http/Controllers/MediaController.php',
         'App\\Http\\Controllers\\NewController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewController.php',
+        'App\\Http\\Controllers\\SeoController' => __DIR__ . '/../..' . '/app/Http/Controllers/SeoController.php',
         'App\\Http\\Controllers\\SystemController' => __DIR__ . '/../..' . '/app/Http/Controllers/SystemController.php',
         'App\\Http\\Controllers\\TestController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -417,6 +421,7 @@ class ComposerStaticInitc953194fdbdd07f4b44ad3798627d881
         'App\\Http\\Requests\\NewsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NewsRequest.php',
         'App\\Http\\Requests\\ProductInfoCatRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductInfoCatRequest.php',
         'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
+        'App\\Http\\Requests\\SeoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SeoRequest.php',
         'App\\Http\\Requests\\SystemRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SystemRequest.php',
         'App\\Media' => __DIR__ . '/../..' . '/app/Media.php',
         'App\\News' => __DIR__ . '/../..' . '/app/News.php',

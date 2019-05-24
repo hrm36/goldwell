@@ -64,6 +64,7 @@
 						<thead style="color: #000;font-weight: bold;">
 							<tr>
 								<td class="text-center">ID</td>
+								<td class="text-center">Ảnh</td>
 								<td class="text-center">Tên bộ sưu tập</td>
 								<td class="text-center">Thời gian</td>
 								<!-- <td class="text-center">Mô tả</td> -->
@@ -75,6 +76,7 @@
 							@foreach($colls as $coll)
 							<tr>
 								<td class="text-center">{{$coll->id}}</td>
+								<td class="text-center"><img src="{{$coll->image}}" width="100px"></td>
 								<td class="text-center">{{$coll->name}}</td>			
 								<td class="text-center">{{$coll->time}}</td>
 								<td class="text-center">

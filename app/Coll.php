@@ -8,7 +8,7 @@ class Coll extends Model
 {
     //
      protected $fillable = [
-        'name', 'slug', 'time', 'status',
+        'name', 'image', 'slug', 'time', 'status',
     ];
     public function media()
     {

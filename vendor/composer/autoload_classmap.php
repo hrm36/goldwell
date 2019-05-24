@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Banner' => $baseDir . '/app/Banner.php',
     'App\\Brand' => $baseDir . '/app/Brand.php',
     'App\\Cat' => $baseDir . '/app/Cat.php',
     'App\\Coll' => $baseDir . '/app/Coll.php',
@@ -14,6 +15,8 @@ return array(
     'App\\Contact' => $baseDir . '/app/Contact.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Extra' => $baseDir . '/app/Extra.php',
+    'App\\Homeproduct' => $baseDir . '/app/Homeproduct.php',
+    'App\\Http\\Controllers\\Admin\\BannerController' => $baseDir . '/app/Http/Controllers/Admin/BannerController.php',
     'App\\Http\\Controllers\\Admin\\CatController' => $baseDir . '/app/Http/Controllers/Admin/CatController.php',
     'App\\Http\\Controllers\\Admin\\HomeController' => $baseDir . '/app/Http/Controllers/Admin/HomeController.php',
     'App\\Http\\Controllers\\Admin\\ProductController' => $baseDir . '/app/Http/Controllers/Admin/ProductController.php',
@@ -33,6 +36,7 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\MediaController' => $baseDir . '/app/Http/Controllers/MediaController.php',
     'App\\Http\\Controllers\\NewController' => $baseDir . '/app/Http/Controllers/NewController.php',
+    'App\\Http\\Controllers\\SeoController' => $baseDir . '/app/Http/Controllers/SeoController.php',
     'App\\Http\\Controllers\\SystemController' => $baseDir . '/app/Http/Controllers/SystemController.php',
     'App\\Http\\Controllers\\TestController' => $baseDir . '/app/Http/Controllers/TestController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
@@ -55,6 +59,7 @@ return array(
     'App\\Http\\Requests\\NewsRequest' => $baseDir . '/app/Http/Requests/NewsRequest.php',
     'App\\Http\\Requests\\ProductInfoCatRequest' => $baseDir . '/app/Http/Requests/ProductInfoCatRequest.php',
     'App\\Http\\Requests\\ProductRequest' => $baseDir . '/app/Http/Requests/ProductRequest.php',
+    'App\\Http\\Requests\\SeoRequest' => $baseDir . '/app/Http/Requests/SeoRequest.php',
     'App\\Http\\Requests\\SystemRequest' => $baseDir . '/app/Http/Requests/SystemRequest.php',
     'App\\Media' => $baseDir . '/app/Media.php',
     'App\\News' => $baseDir . '/app/News.php',

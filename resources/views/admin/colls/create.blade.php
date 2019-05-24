@@ -69,6 +69,22 @@
 				<div class="panel-panel-default">
 					<div id="info" class="panel-collapse-collapse">
 						<div class="panel-body-c">
+							<div class="form-group {{ $errors->has('banner') ? 'has-error' : '' }}">
+								<label class="col-sm-2 control-label">Ảnh(*)</label>
+								<div class="col-sm-10">
+									<div class="input-group">
+										<span class="input-group-btn">
+											<a href="{{env("URL_FILEMANAGE_1", "")}}"
+											class="btn btn-primary red iframe-btn" id="iframe-create-coll"><i
+											class="fa fa-picture-o"></i>Chọn ảnh</a>
+										</span>
+										<input id="thumb_0" class="form-control" type="text" required>
+									</div>
+									<div id="preview">
+
+									</div>
+								</div>
+							</div>
 							<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 								<label class="col-sm-2 control-label">Tên bộ sưu tập (*) </label>
 								<div class="col-sm-10">
@@ -122,4 +138,7 @@
 
 @section('script')
 <script src="{{asset('assets/js/hrm.js')}}"></script>
+<script type="text/javascript">
+settingIframe("#iframe-create-coll");	
+</script>
 @stop

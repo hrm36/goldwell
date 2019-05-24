@@ -22,4 +22,5 @@ Tel: 024-3783 2270 | Email: tnha@sunstar.vn</p>
 <p>Số 2A10 Trần Kh&aacute;nh Dư, Phường T&acirc;n Định, Quận 1<br />
 Tel: 028-2244 0103 | Email: lanh@sunstar.vn</p>',
   ),
+  'number_display' => '5',
 );

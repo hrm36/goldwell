@@ -24,6 +24,7 @@ class CollRequest extends FormRequest
     public function rules()
     {
         return [
+            'image' => 'required',
             'name' => 'required',
             'slug' => 'required',
             'status'=>'required',
@@ -33,6 +34,7 @@ class CollRequest extends FormRequest
     public function messages()
     {
         return [
+            'image.required' => 'Ảnh không được để trống',
             'name.required' => 'Tên không được để trống',
             'slug.required' => 'Đường dẫn không được để trống',
             'status.required' => 'Không được để trống',
